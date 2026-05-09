@@ -3,8 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { Input, Button, Separator } from "@heroui/react";
-import { HiOutlineCompass } from "react-icons/hi";
-import { FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
+import { LuCompass } from "react-icons/lu";
+import { PiTwitterLogo, PiInstagramLogo, PiLinkedinLogo } from "react-icons/pi";
 
 const Footer = () => {
   const linkGroups = {
@@ -18,17 +18,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative mt-20 overflow-hidden bg-slate-950 pb-10 pt-20 text-slate-400">
-      <div className="container mx-auto px-6">
+    <footer className="bg-slate-950 pb-10 pt-20 text-slate-400">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 gap-12 mb-16 lg:grid-cols-12">
-          {/* Brand Info */}
+          {/* Brand & Tagline */}
           <div className="lg:col-span-5">
             <Link
               href="/"
-              className="mb-6 flex items-center gap-3 no-underline"
+              className="mb-6 flex items-center gap-3 no-underline group"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-600 to-emerald-500 shadow-lg shadow-sky-500/20">
-                <HiOutlineCompass className="text-white text-2xl" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-600 to-emerald-500 shadow-lg transition-transform group-hover:rotate-12">
+                <LuCompass className="text-white size-6" />
               </div>
               <span className="text-3xl font-black tracking-tighter text-white">
                 ODESSY
@@ -39,19 +39,19 @@ const Footer = () => {
               <span className="text-sky-500">travel experiences.</span>
             </h2>
             <p className="max-w-md text-lg text-slate-400">
-              We are your trusted partner for discovering stunning destinations
-              around the world.
+              Trusted partner for discovering stunning destinations and creating
+              memories that last a lifetime.
             </p>
           </div>
 
-          {/* Links */}
+          {/* Navigation Links Grid */}
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:col-span-7">
             {Object.entries(linkGroups).map(([title, links]) => (
               <div key={title}>
                 <h3 className="mb-6 text-sm font-bold uppercase tracking-wider text-white">
                   {title}
                 </h3>
-                <ul className="space-y-4">
+                <ul className="space-y-4 list-none p-0">
                   {links.map((item) => (
                     <li key={item}>
                       <Link
@@ -66,7 +66,7 @@ const Footer = () => {
               </div>
             ))}
 
-            {/* Newsletter */}
+            {/* Newsletter Section - Standalone Input */}
             <div className="flex flex-col">
               <h3 className="mb-6 text-sm font-bold uppercase tracking-wider text-white">
                 Newsletter
@@ -75,13 +75,8 @@ const Footer = () => {
                 <Input
                   type="email"
                   placeholder="Enter email"
-                  variant="bordered"
-                  radius="full"
-                  classNames={{
-                    input: "text-white placeholder:text-slate-500",
-                    inputWrapper:
-                      "border-slate-800 hover:border-slate-700 group-data-[focus=true]:border-sky-500",
-                  }}
+                  aria-label="Subscribe to newsletter"
+                  className="bg-slate-900 border-slate-800 text-white rounded-full"
                 />
                 <Button className="bg-sky-600 font-bold text-white hover:bg-sky-700 rounded-full h-12 shadow-lg shadow-sky-900/20">
                   Subscribe
@@ -93,7 +88,7 @@ const Footer = () => {
 
         <Separator className="bg-slate-800/50" />
 
-        {/* Bottom Section */}
+        {/* Bottom Bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-6 md:flex-row">
           <p className="text-sm font-medium">
             © 2026{" "}
@@ -103,21 +98,22 @@ const Footer = () => {
             . All rights reserved.
           </p>
 
+          {/* Social Icons */}
           <div className="flex gap-4">
             {[
-              { icon: <FaTwitter />, label: "Twitter" },
-              { icon: <FaInstagram />, label: "Instagram" },
-              { icon: <FaLinkedinIn />, label: "LinkedIn" },
+              { icon: <PiTwitterLogo size={22} />, label: "Twitter" },
+              { icon: <PiInstagramLogo size={22} />, label: "Instagram" },
+              { icon: <PiLinkedinLogo size={22} />, label: "LinkedIn" },
             ].map((social) => (
               <Button
                 key={social.label}
                 isIconOnly
-                variant="flat"
+                variant="light"
                 radius="full"
-                className="bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-sky-400 transition-all"
+                className="text-slate-400 hover:bg-slate-900 hover:text-sky-400"
                 aria-label={social.label}
               >
-                <span className="text-lg">{social.icon}</span>
+                {social.icon}
               </Button>
             ))}
           </div>

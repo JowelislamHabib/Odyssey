@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-slate-950 pb-10 pt-20 text-slate-400">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 gap-12 mb-16 lg:grid-cols-12">
           {/* Brand & Tagline */}
           <div className="lg:col-span-5">

@@ -13,11 +13,12 @@ const NavBar = () => {
     { label: "Destinations", href: "/destinations" },
     { label: "My Bookings", href: "/my-bookings" },
     { label: "Explore", href: "/explore" },
+    { label: "Add Destination", href: "/add-destination" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-xl border-b border-slate-200/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Brand */}
           <Link

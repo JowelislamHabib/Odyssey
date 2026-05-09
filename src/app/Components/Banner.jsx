@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button, Separator } from "@heroui/react";
+import { Button, Separator, Input } from "@heroui/react";
 import {
   LuSearch,
   LuMapPin,
@@ -9,44 +9,47 @@ import {
   LuWallet,
   LuUsers,
 } from "react-icons/lu";
-
 const Banner = () => {
   return (
-    <div className="relative flex h-[700px] w-full flex-col items-center justify-between overflow-hidden bg-[url('/assets/banner.png')] bg-cover bg-center text-white">
-      <div className="absolute inset-0 bg-slate-950/40" />
+    <div className="relative flex min-h-[800px] md:h-[750px] w-full flex-col items-center justify-between overflow-hidden bg-[url('/assets/banner.png')] bg-cover bg-center text-white">
+      {/* Dynamic Overlay */}
+      <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[2px]" />
 
-      {/* Hero Content */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center">
-        <h1 className="text-5xl font-black leading-tight tracking-tighter md:text-8xl uppercase">
-          Discover Your <br /> Next Adventure
+      {/* Hero Content - Responsive Text Sizes */}
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center pt-20 md:pt-0">
+        <h1 className="text-4xl font-black leading-tight tracking-tighter sm:text-6xl md:text-8xl uppercase">
+          Discover Your <br className="hidden sm:block" /> Next Adventure
         </h1>
-        <p className="max-w-2xl text-lg font-medium text-slate-200 md:text-2xl">
-          Explore breathtaking destinations and create unforgettable memories.
+        <p className="max-w-2xl text-base font-medium text-slate-200 sm:text-lg md:text-2xl">
+          Explore breathtaking destinations and create unforgettable memories
+          with our curated travel experiences.
         </p>
-        <div className="flex gap-5 mt-4">
-          <Button className="bg-sky-600 px-10 py-7 font-bold text-white rounded-full uppercase text-lg">
+        <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
+          <Button className="bg-sky-600 px-10 py-7 font-bold text-white rounded-full uppercase text-lg shadow-lg shadow-sky-600/30">
             Explore Now
           </Button>
           <Button
             variant="flat"
-            className="bg-white/20 px-10 py-7 font-bold text-white backdrop-blur-md rounded-full uppercase text-lg"
+            className="bg-white/10 px-10 py-7 font-bold text-white backdrop-blur-md rounded-full uppercase text-lg border border-white/20"
           >
             View Destination
           </Button>
         </div>
       </div>
 
-      {/* Spacious Search Bar */}
-      <div className="relative z-10 mb-16 w-full max-w-6xl px-6">
-        <div className="flex flex-col md:flex-row items-center bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-3 shadow-2xl">
+      {/* Responsive Search Bar Container */}
+      <div className="relative z-10 mb-12 w-full max-w-6xl px-4 sm:px-6">
+        <div className="flex flex-col md:flex-row items-center bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[32px] p-2 md:p-3 shadow-2xl">
           {/* Location Segment */}
-          <div className="flex flex-1 items-center gap-4 px-8 py-4 hover:bg-white/5 rounded-2xl transition-colors cursor-pointer">
-            <LuMapPin className="text-sky-400 size-6" />
-            <div className="flex flex-col">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300">
+          <div className="flex flex-1 items-center gap-4 px-6 py-4 md:px-8 hover:bg-white/5 rounded-2xl transition-all cursor-pointer group">
+            <div className="p-3 bg-white/5 rounded-xl group-hover:bg-sky-500/20 transition-colors">
+              <LuMapPin className="text-sky-400 size-5 md:size-6" />
+            </div>
+            <div className="flex flex-col overflow-hidden">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 Location
               </span>
-              <span className="text-sm font-bold text-white whitespace-nowrap">
+              <span className="text-sm font-bold text-white truncate">
                 Address, City or Zip
               </span>
             </div>
@@ -54,17 +57,19 @@ const Banner = () => {
 
           <Separator
             orientation="vertical"
-            className="hidden md:block h-10 bg-white/20"
+            className="hidden md:block h-12 self-center bg-white/10"
           />
 
           {/* Date Segment */}
-          <div className="flex flex-1 items-center gap-4 px-8 py-4 hover:bg-white/5 rounded-2xl transition-colors cursor-pointer">
-            <LuCalendar className="text-sky-400 size-6" />
-            <div className="flex flex-col">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300">
+          <div className="flex flex-1 items-center gap-4 px-6 py-4 md:px-8 hover:bg-white/5 rounded-2xl transition-all cursor-pointer group">
+            <div className="p-3 bg-white/5 rounded-xl group-hover:bg-sky-500/20 transition-colors">
+              <LuCalendar className="text-sky-400 size-5 md:size-6" />
+            </div>
+            <div className="flex flex-col overflow-hidden">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 Date/Duration
               </span>
-              <span className="text-sm font-bold text-white whitespace-nowrap">
+              <span className="text-sm font-bold text-white truncate">
                 Anytime / 3 Days
               </span>
             </div>
@@ -72,17 +77,19 @@ const Banner = () => {
 
           <Separator
             orientation="vertical"
-            className="hidden md:block h-10 bg-white/20"
+            className="hidden md:block h-12 self-center bg-white/10"
           />
 
           {/* Budget Segment */}
-          <div className="flex flex-1 items-center gap-4 px-8 py-4 hover:bg-white/5 rounded-2xl transition-colors cursor-pointer">
-            <LuWallet className="text-sky-400 size-6" />
-            <div className="flex flex-col">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300">
+          <div className="flex flex-1 items-center gap-4 px-6 py-4 md:px-8 hover:bg-white/5 rounded-2xl transition-all cursor-pointer group">
+            <div className="p-3 bg-white/5 rounded-xl group-hover:bg-sky-500/20 transition-colors">
+              <LuWallet className="text-sky-400 size-5 md:size-6" />
+            </div>
+            <div className="flex flex-col overflow-hidden">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 Budget
               </span>
-              <span className="text-sm font-bold text-white whitespace-nowrap">
+              <span className="text-sm font-bold text-white truncate">
                 $0 - $3000
               </span>
             </div>
@@ -90,27 +97,26 @@ const Banner = () => {
 
           <Separator
             orientation="vertical"
-            className="hidden md:block h-10 bg-white/20"
+            className="hidden md:block h-12 self-center bg-white/10"
           />
 
           {/* People Segment */}
-          <div className="flex flex-1 items-center gap-4 px-8 py-4 hover:bg-white/5 rounded-2xl transition-colors cursor-pointer">
-            <LuUsers className="text-sky-400 size-6" />
-            <div className="flex flex-col">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300">
+          <div className="flex flex-1 items-center gap-4 px-6 py-4 md:px-8 hover:bg-white/5 rounded-2xl transition-all cursor-pointer group">
+            <div className="p-3 bg-white/5 rounded-xl group-hover:bg-sky-500/20 transition-colors">
+              <LuUsers className="text-sky-400 size-5 md:size-6" />
+            </div>
+            <div className="flex flex-col overflow-hidden">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 People
               </span>
-              <span className="text-sm font-bold text-white whitespace-nowrap">
+              <span className="text-sm font-bold text-white truncate">
                 5 - 10 Guests
               </span>
             </div>
           </div>
 
-          {/* Search Action */}
-          <Button
-            className="w-full md:w-auto md:min-w-[140px] h-16 bg-sky-600 text-white font-bold rounded-2xl md:ml-2 shadow-lg shadow-sky-600/40 hover:bg-sky-500"
-            startContent={<LuSearch size={20} />}
-          >
+          {/* Search Button - Matched to CleanShot 2026-05-10 at 02.29.49.jpg */}
+          <Button className="mt-2 md:mt-0 w-full md:w-45 h-14 md:h-16 bg-[#0088d1] text-white font-bold rounded-[22px] md:ml-4 shadow-[0_10px_30px_-5px_rgba(0,136,209,0.5)] hover:bg-[#0077b6] transition-all active:scale-95 text-lg">
             Search
           </Button>
         </div>

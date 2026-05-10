@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Card, Button } from "@heroui/react";
 import { LuMapPin, LuClock, LuArrowRight } from "react-icons/lu";
+import Link from "next/link";
 
 const DestinationCard = ({ item }) => {
   return (
@@ -56,12 +57,14 @@ const DestinationCard = ({ item }) => {
         </Card.Content>
 
         <Card.Footer className="p-6 pt-0">
-          <Button
-            className="w-full h-14 bg-[#0088d1] text-white font-bold rounded-2xl shadow-[0_8px_20px_-5px_rgba(0,136,209,0.4)] hover:bg-[#0077b6] transition-all uppercase tracking-widest text-xs"
-            endContent={<LuArrowRight size={16} />}
-          >
-            Explore Now
-          </Button>
+          <Link href={`/destinations/${item._id}`} className="w-full">
+            <Button
+              className="w-full h-14 bg-[#0088d1] text-white font-bold rounded-2xl shadow-[0_8px_20px_-5px_rgba(0,136,209,0.4)] hover:bg-[#0077b6] transition-all uppercase tracking-widest text-xs"
+              endContent={<LuArrowRight size={16} />}
+            >
+              Book Now
+            </Button>
+          </Link>
         </Card.Footer>
       </Card>
     </div>

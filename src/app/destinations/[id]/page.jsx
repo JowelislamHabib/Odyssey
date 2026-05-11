@@ -7,11 +7,10 @@ import {
   LuCalendar,
   LuCheck,
   LuArrowLeft,
-  LuPencil,
-  LuTrash2,
-  LuClock,
 } from "react-icons/lu";
 import Link from "next/link";
+import { IoTrashBin } from "react-icons/io5";
+import { EditModal } from "@/app/Components/EditModal";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -35,19 +34,9 @@ const DestinationDetailsPage = async ({ params }) => {
         </Link>
 
         <div className="flex gap-3">
-          <Button
-            variant="bordered"
-            startContent={<LuPencil size={18} />}
-            className="font-bold border-slate-200 rounded-xl"
-          >
-            Edit
-          </Button>
-          <Button
-            variant="bordered"
-            color="danger"
-            startContent={<LuTrash2 size={18} />}
-            className="font-bold border-rose-100 bg-rose-50 rounded-xl"
-          >
+          <EditModal destination={destination} />
+          <Button variant="danger">
+            <IoTrashBin />
             Delete
           </Button>
         </div>
@@ -162,12 +151,6 @@ const DestinationDetailsPage = async ({ params }) => {
                     type="date"
                     defaultValue={destination?.departureDate}
                     variant="flat"
-                    classNames={{
-                      input:
-                        "font-black text-slate-900 text-sm bg-transparent cursor-pointer",
-                      inputWrapper:
-                        "bg-transparent shadow-none border-none p-0 h-auto min-h-0",
-                    }}
                   />
                 </div>
               </div>

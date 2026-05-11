@@ -7,12 +7,11 @@ import {
   Label,
   ListBox,
   Modal,
-  Surface,
   TextArea,
   TextField,
   Select,
 } from "@heroui/react";
-import { BiEdit } from "react-icons/bi";
+import { LuPencil } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 
 export function EditModal({ destination }) {
@@ -29,199 +28,214 @@ export function EditModal({ destination }) {
     imageUrl,
     description,
   } = destination;
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const destination = Object.fromEntries(formData.entries());
-    // console.log(destination);
+    const updatedData = Object.fromEntries(formData.entries());
 
     const res = await fetch(`http://localhost:8000/destination/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(destination),
+      body: JSON.stringify(updatedData),
     });
-    const data = await res.json();
-    console.log(data);
-    router.refresh();
+
+    if (res.ok) {
+      router.refresh();
+    }
   };
+
   return (
     <Modal>
-      <Button variant="secondary">
-        <BiEdit />
+      {/* Trigger Button matches the Details Page style */}
+      <Button
+        variant="bordered"
+        className="font-bold border-slate-200 rounded-full px-6  bg-sky-50 text-sky-600 hover:bg-sky-100 transition-colors flex items-center gap-2"
+      >
+        <LuPencil size={18} />
         Edit
       </Button>
+
       <Modal.Backdrop>
-        <Modal.Container placement="auto">
-          <Modal.Dialog className="sm:max-w-xl">
-            <Modal.CloseTrigger />
-            <Modal.Header>
-              <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                <BiEdit className="size-5" />
-              </Modal.Icon>
-              <Modal.Heading>Edit Destination</Modal.Heading>
+        <Modal.Container placement="center">
+          {/* Main Dialog with custom Odessy rounding */}
+          <Modal.Dialog className="sm:max-w-2xl rounded-lg border-none shadow-2xl bg-white overflow-hidden">
+            <Modal.CloseTrigger className="top-6 right-6" />
+
+            <Modal.Header className="p-8 pb-0 flex flex-col gap-1">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-sky-50 text-sky-600 rounded-xl">
+                  <LuPencil size={24} />
+                </div>
+                <div>
+                  <Modal.Heading className="text-2xl font-black text-slate-900 uppercase tracking-tight leading-none">
+                    Edit Destination
+                  </Modal.Heading>
+                  <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">
+                    Update travel package details
+                  </p>
+                </div>
+              </div>
             </Modal.Header>
-            <Modal.Body className="p-6">
-              <Surface variant="default">
-                <form onSubmit={onSubmit} className="p-10 space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Destination Name */}
-                    <div className="md:col-span-2">
-                      <TextField
-                        name="destinationName"
-                        isRequired
-                        defaultValue={destinationName}
-                      >
-                        <Label>Destination Name</Label>
-                        <Input
-                          placeholder="Bali Paradise"
-                          className="rounded-2xl"
-                        />
-                        <FieldError />
-                      </TextField>
-                    </div>
 
-                    {/* Country */}
-                    <TextField name="country" isRequired defaultValue={country}>
-                      <Label>Country</Label>
-                      <Input placeholder="Indonesia" className="rounded-2xl" />
-                      <FieldError />
-                    </TextField>
-
-                    {/* Category - Updated Select Component */}
-                    <div>
-                      <Select
-                        name="category"
-                        isRequired
-                        className="w-full"
-                        placeholder="Select category"
-                        defaultValue={category}
-                      >
-                        <Label>Category</Label>
-                        <Select.Trigger className="rounded-2xl">
-                          <Select.Value />
-                          <Select.Indicator />
-                        </Select.Trigger>
-                        <Select.Popover>
-                          <ListBox>
-                            <ListBox.Item id="Beach" textValue="Beach">
-                              Beach
-                              <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="Mountain" textValue="Mountain">
-                              Mountain
-                              <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="City" textValue="City">
-                              City
-                              <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="Adventure" textValue="Adventure">
-                              Adventure
-                              <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="Cultural" textValue="Cultural">
-                              Cultural
-                              <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                            <ListBox.Item id="Luxury" textValue="Luxury">
-                              Luxury
-                              <ListBox.ItemIndicator />
-                            </ListBox.Item>
-                          </ListBox>
-                        </Select.Popover>
-                      </Select>
-                    </div>
-
-                    {/* Price */}
+            <Modal.Body className="p-8">
+              <form onSubmit={onSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Destination Name */}
+                  <div className="md:col-span-2">
                     <TextField
-                      name="price"
-                      type="number"
+                      name="destinationName"
                       isRequired
-                      defaultValue={price}
+                      defaultValue={destinationName}
+                      className="flex flex-col gap-2"
                     >
-                      <Label>Price (USD)</Label>
+                      <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                        Destination Name
+                      </Label>
                       <Input
-                        type="number"
-                        placeholder="1299"
-                        className="rounded-2xl"
+                        placeholder="Bali Paradise"
+                        className="rounded-lg border-slate-200 h-12 hover:border-sky-500 transition-all"
                       />
-                      <FieldError />
+                      <FieldError className="text-rose-500 text-[10px] font-bold" />
                     </TextField>
-
-                    {/* Duration */}
-                    <TextField
-                      name="duration"
-                      isRequired
-                      defaultValue={duration}
-                    >
-                      <Label>Duration</Label>
-                      <Input
-                        placeholder="7 Days / 6 Nights"
-                        className="rounded-2xl"
-                      />
-                      <FieldError />
-                    </TextField>
-
-                    {/* Departure Date */}
-                    <div className="md:col-span-2">
-                      <TextField
-                        name="departureDate"
-                        type="date"
-                        isRequired
-                        defaultValue={departureDate}
-                      >
-                        <Label>Departure Date</Label>
-                        <Input type="date" className="rounded-2xl" />
-                        <FieldError />
-                      </TextField>
-                    </div>
-
-                    {/* Image URL - Removed preview */}
-                    <div className="md:col-span-2">
-                      <TextField
-                        name="imageUrl"
-                        isRequired
-                        defaultValue={imageUrl}
-                      >
-                        <Label>Image URL</Label>
-                        <Input
-                          type="url"
-                          placeholder="https://example.com/bali-paradise.jpg"
-                          className="rounded-2xl"
-                        />
-                        <FieldError />
-                      </TextField>
-                    </div>
-
-                    {/* Description */}
-                    <div className="md:col-span-2">
-                      <TextField
-                        name="description"
-                        isRequired
-                        defaultValue={description}
-                      >
-                        <Label>Description</Label>
-                        <TextArea
-                          placeholder="Describe the travel experience..."
-                          className="rounded-3xl"
-                        />
-                        <FieldError />
-                      </TextField>
-                    </div>
                   </div>
-                  {/* Buttons */}
-                  <Modal.Footer>
-                    <Button slot="close" variant="secondary">
-                      Cancel
-                    </Button>
-                    <Button type="submit" slot="close">
-                      Save
-                    </Button>
-                  </Modal.Footer>
-                </form>
-              </Surface>
+
+                  {/* Country */}
+                  <TextField
+                    name="country"
+                    isRequired
+                    defaultValue={country}
+                    className="flex flex-col gap-2"
+                  >
+                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                      Country
+                    </Label>
+                    <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
+                    <FieldError className="text-rose-500 text-[10px] font-bold" />
+                  </TextField>
+
+                  {/* Category */}
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                      Category
+                    </Label>
+                    <Select
+                      name="category"
+                      isRequired
+                      defaultValue={category}
+                      className="w-full"
+                    >
+                      <Select.Trigger className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all px-4">
+                        <Select.Value />
+                        <Select.Indicator />
+                      </Select.Trigger>
+                      <Select.Popover className="rounded-xl">
+                        <ListBox className="p-2">
+                          {[
+                            "Beach",
+                            "Mountain",
+                            "City",
+                            "Adventure",
+                            "Cultural",
+                            "Luxury",
+                          ].map((item) => (
+                            <ListBox.Item
+                              key={item}
+                              id={item}
+                              textValue={item}
+                              className="rounded-xl p-2 hover:bg-sky-50"
+                            >
+                              {item}
+                              <ListBox.ItemIndicator />
+                            </ListBox.Item>
+                          ))}
+                        </ListBox>
+                      </Select.Popover>
+                    </Select>
+                  </div>
+
+                  {/* Price */}
+                  <TextField
+                    name="price"
+                    type="number"
+                    isRequired
+                    defaultValue={price}
+                    className="flex flex-col gap-2"
+                  >
+                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                      Price (USD)
+                    </Label>
+                    <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
+                    <FieldError className="text-rose-500 text-[10px] font-bold" />
+                  </TextField>
+
+                  {/* Duration */}
+                  <TextField
+                    name="duration"
+                    isRequired
+                    defaultValue={duration}
+                    className="flex flex-col gap-2"
+                  >
+                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                      Duration
+                    </Label>
+                    <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
+                    <FieldError className="text-rose-500 text-[10px] font-bold" />
+                  </TextField>
+
+                  {/* Image URL */}
+                  <div className="md:col-span-2">
+                    <TextField
+                      name="imageUrl"
+                      isRequired
+                      defaultValue={imageUrl}
+                      className="flex flex-col gap-2"
+                    >
+                      <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                        Image URL
+                      </Label>
+                      <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
+                      <FieldError className="text-rose-500 text-[10px] font-bold" />
+                    </TextField>
+                  </div>
+
+                  {/* Description */}
+                  <div className="md:col-span-2">
+                    <TextField
+                      name="description"
+                      isRequired
+                      defaultValue={description}
+                      className="flex flex-col gap-2"
+                    >
+                      <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                        Description
+                      </Label>
+                      <TextArea className="rounded-lg border-slate-200 p-4 hover:border-sky-500 transition-all min-h-30" />
+                      <FieldError className="text-rose-500 text-[10px] font-bold" />
+                    </TextField>
+                  </div>
+                </div>
+
+                {/* Modal Footer Buttons */}
+                <div className="flex gap-4 pt-4">
+                  <Button
+                    slot="close"
+                    variant="flat"
+                    className="flex-1 h-14 rounded-xl font-bold text-slate-500"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    slot="close"
+                    className="flex-[2] h-14 bg-[#0088d1] text-white font-black rounded-xl shadow-[0_10px_25px_-5px_rgba(0,136,209,0.4)] hover:bg-[#0077b6] transition-all uppercase tracking-widest text-xs"
+                  >
+                    Save Changes
+                  </Button>
+                </div>
+              </form>
             </Modal.Body>
           </Modal.Dialog>
         </Modal.Container>

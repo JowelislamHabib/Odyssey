@@ -8,10 +8,13 @@ import {
   TextArea,
   TextField,
   Select,
+  toast,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const AddDestinationPage = () => {
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -27,6 +30,20 @@ const AddDestinationPage = () => {
     });
     const data = await res.json();
     console.log(data);
+
+    if (res.ok) {
+      const newId = data.insertedId;
+      toast.success("You have added a new destination", {
+        actionProps: {
+          children: "View",
+          onPress: () => {
+            router.push(`/destinations/${newId}`);
+          },
+          className: "bg-success text-success-foreground",
+        },
+        description: "Your new destination has been added successfully.",
+      });
+    }
   };
   return (
     <div className="container mx-auto">

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Button, Card, Separator, Input } from "@heroui/react";
+import { Button, Card, Separator, Input, AlertDialog } from "@heroui/react";
 import {
   LuMapPin,
   LuStar,
@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { IoTrashBin } from "react-icons/io5";
 import { EditModal } from "@/app/Components/EditModal";
+import DeleteAlert from "@/app/Components/DeleteAlert";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -35,10 +36,7 @@ const DestinationDetailsPage = async ({ params }) => {
 
         <div className="flex gap-3">
           <EditModal destination={destination} />
-          <Button variant="danger">
-            <IoTrashBin />
-            Delete
-          </Button>
+          <DeleteAlert destination={destination} />
         </div>
       </div>
 

@@ -10,6 +10,7 @@ import {
   TextArea,
   TextField,
   Select,
+  toast,
 } from "@heroui/react";
 import { LuPencil } from "react-icons/lu";
 import { useRouter } from "next/navigation";
@@ -44,6 +45,7 @@ export function EditModal({ destination }) {
 
     if (res.ok) {
       router.refresh();
+      toast.success("Destination information updated successfully!");
     }
   };
 

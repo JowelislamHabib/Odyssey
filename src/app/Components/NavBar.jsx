@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Import this
 import { Button } from "@heroui/react";
 import { LuCompass, LuMenu, LuX } from "react-icons/lu";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // Get current route
 
   const menuItems = [
     { label: "Home", href: "/" },
@@ -25,7 +27,7 @@ const NavBar = () => {
             href="/"
             className="flex items-center gap-2.5 group no-underline"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-600 to-emerald-500 shadow-lg transition-transform group-hover:rotate-12">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-600 to-blue-800 shadow-lg transition-transform group-hover:rotate-12">
               <LuCompass className="text-white size-6" />
             </div>
             <p className="text-2xl font-black tracking-tight text-slate-900 uppercase">
@@ -34,16 +36,23 @@ const NavBar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1 rounded-full border border-slate-200/40 bg-slate-50/50 p-1">
-            {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="rounded-full px-5 py-2 text-sm font-bold text-slate-600 transition-all hover:bg-white hover:text-sky-600 no-underline"
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-1 rounded-xl border border-slate-200/40 bg-slate-50/50 p-1">
+            {menuItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`rounded-lg px-5 py-2 text-sm font-bold transition-all no-underline ${
+                    isActive
+                      ? "bg-white text-sky-600 shadow-sm ring-1 ring-slate-200/50"
+                      : "text-slate-600 hover:bg-white/50 hover:text-sky-600"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Actions */}
@@ -57,7 +66,7 @@ const NavBar = () => {
             <Button
               as={Link}
               href="/signup"
-              className="bg-sky-600 text-white font-bold rounded-full px-7"
+              className="bg-sky-600 text-white font-bold rounded-xl px-7"
             >
               Join Now
             </Button>
@@ -76,15 +85,23 @@ const NavBar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-1">
-          {menuItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="block px-3 py-3 text-base font-bold text-slate-600 hover:bg-slate-50 rounded-lg no-underline"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {menuItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setIsOpen(false)} // Close menu on click
+                className={`block px-3 py-3 text-base font-bold rounded-lg no-underline ${
+                  isActive
+                    ? "bg-sky-50 text-sky-600"
+                    : "text-slate-600 hover:bg-slate-50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       )}
     </nav>

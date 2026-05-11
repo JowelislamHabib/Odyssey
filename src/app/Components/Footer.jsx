@@ -27,14 +27,14 @@ const Footer = () => {
               href="/"
               className="mb-6 flex items-center gap-3 no-underline group"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-sky-600 to-emerald-500 shadow-lg transition-transform group-hover:rotate-12">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br  from-sky-600 to-blue-800 shadow-lg transition-transform group-hover:rotate-12">
                 <LuCompass className="text-white size-6" />
               </div>
               <span className="text-3xl font-black tracking-tighter text-white">
                 ODESSY
               </span>
             </Link>
-            <h2 className="mb-6 text-4xl font-bold leading-[1.1] text-white md:text-5xl">
+            <h2 className="mb-6 text-4xl font-bold leading-[1.1] text-white md:text-3xl">
               Your gateway to extraordinary{" "}
               <span className="text-sky-500">travel experiences.</span>
             </h2>
@@ -78,7 +78,7 @@ const Footer = () => {
                   aria-label="Subscribe to newsletter"
                   className="bg-slate-900 border-slate-800 text-white rounded-full"
                 />
-                <Button className="bg-sky-600 font-bold text-white hover:bg-sky-700 rounded-full h-12 shadow-lg shadow-sky-900/20">
+                <Button className="bg-sky-600 font-bold text-white hover:bg-sky-700 rounded-full shadow-lg shadow-sky-900/20">
                   Subscribe
                 </Button>
               </div>

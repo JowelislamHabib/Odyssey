@@ -9,6 +9,7 @@ import {
   LuWallet,
   LuUsers,
 } from "react-icons/lu";
+import Link from "next/link";
 const Banner = () => {
   return (
     <div className="relative flex min-h-[800px] md:h-[750px] w-full flex-col items-center justify-between overflow-hidden bg-[url('/assets/banner.png')] bg-cover bg-center text-white">
@@ -25,9 +26,11 @@ const Banner = () => {
           with our curated travel experiences.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-          <Button className="bg-sky-600 px-10 py-7 font-bold text-white rounded-full uppercase text-lg shadow-lg shadow-sky-600/30">
-            Explore Now
-          </Button>
+          <Link href="/destinations">
+            <Button className="bg-sky-600 px-10 py-7 font-bold text-white rounded-full uppercase text-lg shadow-lg shadow-sky-600/30">
+              Explore Now
+            </Button>
+          </Link>
           <Button
             variant="flat"
             className="bg-white/10 px-10 py-7 font-bold text-white backdrop-blur-md rounded-full uppercase text-lg border border-white/20"

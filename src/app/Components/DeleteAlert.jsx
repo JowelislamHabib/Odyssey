@@ -1,5 +1,5 @@
 "use client";
-import { AlertDialog, Button } from "@heroui/react";
+import { AlertDialog, Button, toast } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { IoTrashBin } from "react-icons/io5";
@@ -20,6 +20,7 @@ const DeleteAlert = ({ destination }) => {
 
     if (res.ok) {
       router.push("/destinations");
+      toast.danger("Destination is deleted");
     }
   };
   return (
@@ -27,7 +28,7 @@ const DeleteAlert = ({ destination }) => {
       <AlertDialog>
         <Button variant="danger">
           <IoTrashBin />
-          Delete Project
+          Delete
         </Button>
         <AlertDialog.Backdrop>
           <AlertDialog.Container>
@@ -36,13 +37,13 @@ const DeleteAlert = ({ destination }) => {
               <AlertDialog.Header>
                 <AlertDialog.Icon status="danger" />
                 <AlertDialog.Heading>
-                  Delete project permanently?
+                  Delete {destinationName} permanently?
                 </AlertDialog.Heading>
               </AlertDialog.Header>
               <AlertDialog.Body>
                 <p>
                   This will permanently delete{" "}
-                  <strong>My Awesome Project</strong> and all of its data. This
+                  <strong>{destinationName}</strong> and all of its data. This
                   action cannot be undone.
                 </p>
               </AlertDialog.Body>
@@ -51,7 +52,7 @@ const DeleteAlert = ({ destination }) => {
                   Cancel
                 </Button>
                 <Button slot="close" variant="danger" onClick={handleDelete}>
-                  Delete Project
+                  Delete
                 </Button>
               </AlertDialog.Footer>
             </AlertDialog.Dialog>

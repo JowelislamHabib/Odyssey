@@ -28,7 +28,7 @@ const Banner = () => {
         <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
           <Link href="/destinations">
             <Button className="bg-sky-600 px-10 py-7 font-bold text-white rounded-full uppercase text-lg shadow-lg shadow-sky-600/30">
-              Explore Now
+              Explore Destinations
             </Button>
           </Link>
           <Button

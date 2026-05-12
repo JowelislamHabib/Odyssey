@@ -12,14 +12,15 @@ import {
 import Link from "next/link";
 const Banner = () => {
   return (
-    <div className="relative flex min-h-[800px] md:h-[750px] w-full flex-col items-center justify-between overflow-hidden bg-[url('/assets/banner.png')] bg-cover bg-center text-white">
+    <div className="relative flex min-h-[800px] md:h-[750px] w-full flex-col items-center justify-between overflow-hidden bg-[url('/assets/banner.jpg')] bg-cover bg-center text-white">
       {/* Dynamic Overlay */}
       <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[2px]" />
 
       {/* Hero Content - Responsive Text Sizes */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 px-6 text-center pt-20 md:pt-0">
-        <h1 className="text-4xl font-black leading-tight tracking-tighter sm:text-6xl md:text-8xl uppercase">
-          Discover Your <br className="hidden sm:block" /> Next Adventure
+        <h1 className="text-4xl font-serif font-bold sm:text-4xl md:text-7xl uppercase">
+          Discover Your <br className="hidden sm:block font-sans" /> Next
+          Adventure
         </h1>
         <p className="max-w-2xl text-base font-medium text-slate-200 sm:text-lg md:text-2xl">
           Explore breathtaking destinations and create unforgettable memories

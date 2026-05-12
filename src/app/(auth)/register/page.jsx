@@ -197,7 +197,7 @@ const RegisterPage = () => {
               type="submit"
               className="w-full py-5 bg-stone-900 text-white rounded-xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-sky-500 transition-all active:scale-[0.98] shadow-xl"
             >
-              Join the Store
+              Join the adventure
             </button>
           </Form>
 

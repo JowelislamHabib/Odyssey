@@ -20,7 +20,7 @@ const NavBar = () => {
     error, //error object
     refetch, //refetch the session
   } = authClient.useSession();
-  const { user } = session || {};
+  const user = session?.user;
   console.log(session);
 
   const menuItems = [
@@ -71,7 +71,7 @@ const NavBar = () => {
           {/* Actions */}
 
           <div className="hidden md:flex items-center gap-4">
-            {session && (
+            {user && (
               <Dropdown placement="bottom">
                 <Dropdown.Trigger className="flex items-center justify-center rounded-full outline-none shrink-0">
                   <Avatar
@@ -149,7 +149,7 @@ const NavBar = () => {
               </Dropdown>
             )}
 
-            {!session && (
+            {!user && (
               <div className="hidden md:flex gap-4 justify-center items-center">
                 <Link
                   href={"/login"}

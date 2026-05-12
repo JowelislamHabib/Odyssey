@@ -63,13 +63,11 @@ const NavBar = () => {
             >
               Login
             </Link>
-            <Button
-              as={Link}
-              href="/signup"
-              className="bg-sky-600 text-white font-bold rounded-xl px-7"
-            >
-              Join Now
-            </Button>
+            <Link href={"/register"}>
+              <Button className="bg-sky-600 text-white font-bold rounded-xl px-7">
+                Join Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}

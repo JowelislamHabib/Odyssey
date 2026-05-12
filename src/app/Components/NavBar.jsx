@@ -69,28 +69,7 @@ const NavBar = () => {
           </div>
 
           {/* Actions */}
-          {/* <div className="hidden md:flex items-center gap-4">
-            {session ? (
-              <Link
-                href="/profile"
-                className="text-sm font-bold text-slate-600 hover:text-sky-600 no-underline"
-              >
-                Profile
-              </Link>
-            ) : (
-              <Link
-                href="/login"
-                className="text-sm font-bold text-slate-600 hover:text-sky-600 no-underline"
-              >
-                Login
-              </Link>
-            )}
-            <Link href={"/register"}>
-              <Button className="bg-sky-600 text-white font-bold rounded-xl px-7">
-                Join Now
-              </Button>
-            </Link>
-          </div> */}
+
           <div className="hidden md:flex items-center gap-4">
             {session && (
               <Dropdown placement="bottom">
@@ -174,14 +153,14 @@ const NavBar = () => {
               <div className="hidden md:flex gap-4 justify-center items-center">
                 <Link
                   href={"/login"}
-                  className="flex justify-center items-center gap-2 px-8 py-2.5 rounded-xl border-2 border-sky-500 text-stone-900 font-bold hover:shadow-[0_8px_24px_rgba(245,158,11,0.2)] transition-all active:scale-95"
+                  className="flex justify-center items-center gap-2 px-5 py-2 rounded-xl border-2 border-sky-500 text-stone-900 font-bold hover:shadow-[0_8px_24px_rgba(245,158,11,0.2)] transition-all active:scale-95"
                 >
                   <IoLogIn size={24} />
                   Login
                 </Link>
                 <Link
                   href={"/register"}
-                  className="flex justify-center items-center gap-2 px-8 py-2.5 rounded-xl border-2 border-sky-500 bg-sky-500 text-stone-50 font-bold hover:shadow-[0_8px_24px_rgba(245,158,11,0.3)] transition-all active:scale-95"
+                  className="flex justify-center items-center gap-2 px-5 py-2 rounded-xl border-2 border-sky-500 bg-sky-500 text-stone-50 font-bold hover:shadow-[0_8px_24px_rgba(245,158,11,0.3)] transition-all active:scale-95"
                 >
                   <IoPersonAdd />
                   Register

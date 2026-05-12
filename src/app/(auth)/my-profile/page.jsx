@@ -8,10 +8,9 @@ import {
   IoHeartOutline,
   IoShieldCheckmarkOutline,
   IoChevronForward,
-  IoSettingsOutline,
 } from "react-icons/io5";
 import { authClient } from "@/lib/auth-client";
-import { UserUpdate } from "@/components/UserUpdate";
+import { UserUpdate } from "@/app/Components/UserUpdate";
 
 const MyProfile = () => {
   const { data, isPending } = authClient.useSession();

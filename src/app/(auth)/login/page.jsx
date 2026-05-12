@@ -23,6 +23,7 @@ const LoginPage = () => {
       callbackURL: "/",
     });
 
+    console.log(data, error);
     if (error) {
       toast.danger(error.message, {
         actionProps: {
@@ -75,6 +76,7 @@ const LoginPage = () => {
               <div className="relative flex items-center">
                 <IoMailOutline className="absolute left-4 text-stone-400 size-5 z-10" />
                 <Input
+                  aria-label="email"
                   name="email"
                   placeholder="name@example.com"
                   className="w-full pl-11 pr-4 py-4 bg-stone-50 border border-stone-200 rounded-xl text-stone-900 focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
@@ -99,6 +101,7 @@ const LoginPage = () => {
               <div className="relative flex items-center">
                 <IoLockClosedOutline className="absolute left-4 text-stone-400 size-5 z-10" />
                 <Input
+                  area-label="Password"
                   type="password"
                   name="password"
                   placeholder="••••••••"
@@ -153,7 +156,7 @@ const LoginPage = () => {
 
           <div className="mt-8 text-center">
             <p className="text-stone-900/50 text-sm font-medium">
-              Don't have an account?{" "}
+              Don't have an account?
               <Link
                 href="/register"
                 className="text-stone-900 font-black hover:text-sky-500 transition-colors underline decoration-sky-500/30 underline-offset-4"

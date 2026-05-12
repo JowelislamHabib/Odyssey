@@ -3,12 +3,25 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Import this
-import { Button } from "@heroui/react";
+import { Avatar, Button, Dropdown, Label } from "@heroui/react";
 import { LuCompass, LuMenu, LuX } from "react-icons/lu";
+import { authClient } from "@/lib/auth-client";
+import { IoLogIn, IoPerson, IoPersonAdd } from "react-icons/io5";
+import { PiGear } from "react-icons/pi";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname(); // Get current route
+
+  const {
+    data: session,
+    isPending, //loading state
+    error, //error object
+    refetch, //refetch the session
+  } = authClient.useSession();
+  const { user } = session || {};
+  console.log(session);
 
   const menuItems = [
     { label: "Home", href: "/" },
@@ -56,18 +69,125 @@ const NavBar = () => {
           </div>
 
           {/* Actions */}
-          <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/login"
-              className="text-sm font-bold text-slate-600 hover:text-sky-600 no-underline"
-            >
-              Login
-            </Link>
+          {/* <div className="hidden md:flex items-center gap-4">
+            {session ? (
+              <Link
+                href="/profile"
+                className="text-sm font-bold text-slate-600 hover:text-sky-600 no-underline"
+              >
+                Profile
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="text-sm font-bold text-slate-600 hover:text-sky-600 no-underline"
+              >
+                Login
+              </Link>
+            )}
             <Link href={"/register"}>
               <Button className="bg-sky-600 text-white font-bold rounded-xl px-7">
                 Join Now
               </Button>
             </Link>
+          </div> */}
+          <div className="hidden md:flex items-center gap-4">
+            {session && (
+              <Dropdown placement="bottom">
+                <Dropdown.Trigger className="flex items-center justify-center rounded-full outline-none shrink-0">
+                  <Avatar
+                    size="lg"
+                    className="border-2 border-sky-500 rounded-full object-cover cursor-pointer"
+                  >
+                    <Avatar.Image alt={user?.name} src={user?.image} />
+                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                  </Avatar>
+                </Dropdown.Trigger>
+
+                <Dropdown.Popover className="rounded-xl mt-2" align="center">
+                  <div className="px-3 pt-3 pb-1">
+                    <div className="flex items-center gap-2">
+                      <Avatar size="md">
+                        <Avatar.Image alt={user?.name} src={user?.image} />
+                        <Avatar.Fallback>
+                          {user?.name.charAt(0)}
+                        </Avatar.Fallback>
+                      </Avatar>
+                      <div className="flex flex-col gap-0">
+                        <p className="text-sm leading-5 font-medium">
+                          {user?.name}
+                        </p>
+                        <p className="text-xs leading-none text-muted">
+                          {user?.email}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item id="profile">
+                      <Link
+                        href={"/my-profile"}
+                        className="flex w-full items-center justify-between gap-2"
+                      >
+                        <Label>My Profile</Label>
+                        <IoPerson className="size-3.5 text-muted" />
+                      </Link>
+                    </Dropdown.Item>
+
+                    <Dropdown.Item
+                      id="settings"
+                      textValue="Settings"
+                      onAction={() => setIsUserUpdateOpen(true)}
+                    >
+                      <div
+                        className="flex w-full items-center justify-between gap-2 cursor-pointer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setIsUserUpdateOpen(true);
+                        }}
+                      >
+                        <Label className="cursor-pointer">Settings</Label>
+                        <PiGear className="size-3.5 text-muted" />
+                      </div>
+                    </Dropdown.Item>
+
+                    <Dropdown.Item id="logout" variant="danger">
+                      <div
+                        onClick={async () => {
+                          await authClient.signOut();
+                          router.push("/login");
+                          router.refresh();
+                        }}
+                        className="flex w-full items-center justify-between gap-2"
+                      >
+                        <Label>Log Out</Label>
+                        <FaArrowUpRightFromSquare className="size-3.5 text-danger" />
+                      </div>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown.Popover>
+              </Dropdown>
+            )}
+
+            {!session && (
+              <div className="hidden md:flex gap-4 justify-center items-center">
+                <Link
+                  href={"/login"}
+                  className="flex justify-center items-center gap-2 px-8 py-2.5 rounded-xl border-2 border-sky-500 text-stone-900 font-bold hover:shadow-[0_8px_24px_rgba(245,158,11,0.2)] transition-all active:scale-95"
+                >
+                  <IoLogIn size={24} />
+                  Login
+                </Link>
+                <Link
+                  href={"/register"}
+                  className="flex justify-center items-center gap-2 px-8 py-2.5 rounded-xl border-2 border-sky-500 bg-sky-500 text-stone-50 font-bold hover:shadow-[0_8px_24px_rgba(245,158,11,0.3)] transition-all active:scale-95"
+                >
+                  <IoPersonAdd />
+                  Register
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile Toggle */}

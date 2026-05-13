@@ -21,17 +21,6 @@ const MyBookingsPage = async () => {
   const bookings = await res.json();
   console.log(bookings);
 
-  bookings.forEach((booking) => {
-    booking.departureDate = new Date(booking.departureDate).toLocaleDateString(
-      "en-US",
-      {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      },
-    );
-  });
-
   return (
     <div className="container mx-auto px-6 py-12">
       {/* Header */}
@@ -127,7 +116,14 @@ const MyBookingsPage = async () => {
                         <LuCalendar size={18} />
                       </div>
                       <span className="text-sm font-bold">
-                        {booking.departureDate}
+                        {new Date(booking.departureDate).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          },
+                        )}
                       </span>
                     </div>
                   </div>

@@ -25,6 +25,7 @@ const BookingCard = ({ destination }) => {
       price: destination?.price,
       country: destination?.country,
       departureDate: new Date(departureDate),
+      category: destination?.category,
     };
     const res = await fetch("http://localhost:8000/bookings", {
       method: "POST",

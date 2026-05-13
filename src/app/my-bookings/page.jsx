@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import Image from "next/image";
 
 const MyBookingsPage = async () => {
   const session = await auth.api.getSession({
@@ -51,20 +52,15 @@ const MyBookingsPage = async () => {
           >
             {/* Image Section */}
             <div className="relative w-full lg:w-[400px] h-64 lg:h-auto overflow-hidden">
-              <img
+              <Image
+                fill
                 src={booking.destinationImage}
                 alt={booking.destinationName}
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-4 left-4">
-                <span
-                  className={`px-4 py-1.5 rounded-lg font-black text-[10px] uppercase tracking-widest backdrop-blur-md border border-white/20 shadow-xl ${
-                    booking.status === "Confirmed"
-                      ? "bg-emerald-500/90 text-white"
-                      : "bg-amber-500/90 text-white"
-                  }`}
-                >
-                  {booking.status}
+                <span className="px-4 py-1.5 rounded-lg font-black text-[10px] uppercase tracking-widest backdrop-blur-md border border-white/20 shadow-xl bg-sky-600 text-white">
+                  {booking.category}
                 </span>
               </div>
             </div>
@@ -99,7 +95,8 @@ const MyBookingsPage = async () => {
                     <div className="flex items-center gap-3">
                       <div className="relative size-10 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center">
                         {booking.userImage ? (
-                          <img
+                          <Image
+                            fill
                             src={booking.userImage}
                             alt={booking.userName}
                             className="object-cover"
@@ -113,7 +110,8 @@ const MyBookingsPage = async () => {
                           {booking.userName}
                         </span>
                         <span className="text-[10px] text-slate-400 font-medium">
-                          Guest ID: {booking.userId}
+                          Booking ID:{" "}
+                          {booking.userId?.slice(0, 6)?.toUpperCase()}
                         </span>
                       </div>
                     </div>
@@ -144,7 +142,7 @@ const MyBookingsPage = async () => {
                         <LuHash size={18} />
                       </div>
                       <span className="text-sm font-bold font-mono tracking-tighter">
-                        {booking._id}
+                        {booking._id?.slice(0, 8)?.toUpperCase()}
                       </span>
                     </div>
                   </div>

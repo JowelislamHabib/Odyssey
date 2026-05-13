@@ -74,6 +74,10 @@ const NavBar = () => {
             {user && (
               <Dropdown placement="bottom">
                 <Dropdown.Trigger className="flex items-center justify-center rounded-full outline-none shrink-0">
+                  {" "}
+                  <h1 className="mr-2 text-sm  text-slate-900">
+                    Hi, {user?.name}
+                  </h1>
                   <Avatar
                     size="lg"
                     className="border-2 border-sky-500 rounded-full object-cover cursor-pointer"

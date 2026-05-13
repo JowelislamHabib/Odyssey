@@ -1,8 +1,13 @@
 import { Button, Card, Input } from "@heroui/react";
 import React from "react";
 import { LuCalendar, LuCheck } from "react-icons/lu";
+import { BookingDatePicker } from "./BookingDatePicker";
+import { authClient } from "@/lib/auth-client";
 
 const BookingCard = ({ destination }) => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  console.log(session);
   return (
     <div>
       <div className="lg:col-span-1">
@@ -22,21 +27,16 @@ const BookingCard = ({ destination }) => {
           </div>
 
           <div className="space-y-2">
+            <p className="text-xs uppercase font-bold text-slate-400 tracking-wider">
+              Departure Date
+            </p>
             <div className="flex items-center gap-3 border border-slate-200 rounded-2xl px-4 h-16 bg-slate-50 hover:border-sky-300 transition-all">
               <div className="w-11 h-11 rounded-xl bg-sky-100 flex items-center justify-center shrink-0">
                 <LuCalendar className="text-sky-600" size={20} />
               </div>
 
               <div className="flex-1">
-                <p className="text-xs uppercase font-bold text-slate-400 tracking-wider">
-                  Select A Date
-                </p>
-
-                <Input
-                  type="date"
-                  defaultValue={destination?.departureDate}
-                  variant="flat"
-                />
+                <BookingDatePicker />
               </div>
             </div>
           </div>

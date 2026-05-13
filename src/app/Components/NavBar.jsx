@@ -14,12 +14,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname(); // Get current route
 
-  const {
-    data: session,
-    isPending, //loading state
-    error, //error object
-    refetch, //refetch the session
-  } = authClient.useSession();
+  const { data: session } = authClient.useSession();
   const user = session?.user;
   console.log(session);
 

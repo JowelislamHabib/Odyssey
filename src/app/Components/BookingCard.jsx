@@ -1,12 +1,15 @@
 "use client";
-import { Button, Card, Input } from "@heroui/react";
+import { Button, Card, Input, toast } from "@heroui/react";
 import { LuCalendar, LuCheck } from "react-icons/lu";
 import { authClient } from "@/lib/auth-client";
 import { Calendar, DateField, DatePicker } from "@heroui/react";
 import { getLocalTimeZone, today } from "@internationalized/date";
 
-import { useState } from "react";
+import { use, useState } from "react";
+import { useRouter } from "next/navigation";
 const BookingCard = ({ destination }) => {
+  const router = useRouter();
+
   const { data: session } = authClient.useSession();
   const user = session?.user;
   //   console.log(user);
@@ -122,6 +125,18 @@ const BookingCard = ({ destination }) => {
           </div>
 
           <Button
+            onPress={() =>
+              toast.success("You have booked a destination", {
+                actionProps: {
+                  children: "My Bookings",
+                  onPress: () => {
+                    router.push("/my-bookings");
+                  },
+                  className: "bg-success text-success-foreground",
+                },
+                description: "Your booking has been confirmed!",
+              })
+            }
             onClick={handleBooking}
             className="w-full h-16 bg-[#0088d1] text-white font-black rounded-xl shadow-[0_10px_30px_-5px_rgba(0,136,209,0.5)] hover:bg-[#0077b6] transition-all uppercase  text-sm"
           >

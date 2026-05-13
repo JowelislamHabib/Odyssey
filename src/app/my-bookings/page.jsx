@@ -11,6 +11,8 @@ import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
+import BookingCancelAlert from "../Components/BookingCancelAlert";
+import { Button } from "@heroui/react";
 
 const MyBookingsPage = async () => {
   const session = await auth.api.getSession({
@@ -147,10 +149,7 @@ const MyBookingsPage = async () => {
 
               {/* Footer Actions */}
               <div className="mt-12 flex items-center justify-end gap-4">
-                <button className="flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-200 text-slate-500 font-bold text-sm hover:bg-rose-50 hover:text-rose-600 hover:border-rose-100 transition-all">
-                  <LuTrash2 size={16} />
-                  Cancel
-                </button>
+                <BookingCancelAlert booking={booking} />
                 <Link
                   href={`/destinations/${booking.destinationId}`}
                   className="flex items-center gap-2 px-8 py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-sky-600 shadow-lg shadow-slate-200 transition-all no-underline"
@@ -163,6 +162,24 @@ const MyBookingsPage = async () => {
           </div>
         ))}
       </div>
+      {bookings.length === 0 && (
+        <div className="flex flex-col items-center justify-center py-24 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200">
+          <div className="p-6 bg-white rounded-full shadow-sm mb-4">
+            <LuMapPin size={40} className="text-slate-300" />
+          </div>
+          <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight">
+            No Bookings Yet
+          </h3>
+          <p className="text-slate-500 font-medium mt-2 mb-8">
+            Ready to start your next adventure?
+          </p>
+          <Link href="/destinations">
+            <Button className="bg-sky-600 px-10 py-7 font-bold text-white rounded-full uppercase text-lg shadow-lg shadow-sky-600/30">
+              Explore Destinations
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

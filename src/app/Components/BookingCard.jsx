@@ -1,13 +1,35 @@
+"use client";
 import { Button, Card, Input } from "@heroui/react";
-import React from "react";
 import { LuCalendar, LuCheck } from "react-icons/lu";
-import { BookingDatePicker } from "./BookingDatePicker";
 import { authClient } from "@/lib/auth-client";
+import { Calendar, DateField, DatePicker } from "@heroui/react";
+import { getLocalTimeZone, today } from "@internationalized/date";
 
+import { useState } from "react";
 const BookingCard = ({ destination }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(session);
+  console.log(user);
+
+  const [departureDate, setDepartureDate] = useState(today(getLocalTimeZone()));
+  console.log(new Date(departureDate));
+
+  const handleBooking = async () => {
+    const bookingData = {
+      userId: user?.id,
+      userName: user?.name,
+      userImage: user?.image,
+      destinationId: destination?._id,
+      destinationName: destination?.destinationName,
+      destinationImage: destination?.imageUrl,
+      price: destination?.price,
+      country: destination?.country,
+      departureDate: new Date(departureDate),
+    };
+  };
+
+  console.log(destination, destination.imageUrl);
+
   return (
     <div>
       <div className="lg:col-span-1">
@@ -36,7 +58,54 @@ const BookingCard = ({ destination }) => {
               </div>
 
               <div className="flex-1">
-                <BookingDatePicker />
+                <div>
+                  <DatePicker
+                    className="w-full"
+                    name="date"
+                    value={departureDate}
+                    onChange={setDepartureDate}
+                  >
+                    <DateField.Group fullWidth>
+                      <DateField.Input>
+                        {(segment) => <DateField.Segment segment={segment} />}
+                      </DateField.Input>
+                      <DateField.Suffix>
+                        <DatePicker.Trigger>
+                          <DatePicker.TriggerIndicator />
+                        </DatePicker.Trigger>
+                      </DateField.Suffix>
+                    </DateField.Group>
+                    <DatePicker.Popover>
+                      <Calendar aria-label="Event date">
+                        <Calendar.Header>
+                          <Calendar.YearPickerTrigger>
+                            <Calendar.YearPickerTriggerHeading />
+                            <Calendar.YearPickerTriggerIndicator />
+                          </Calendar.YearPickerTrigger>
+                          <Calendar.NavButton slot="previous" />
+                          <Calendar.NavButton slot="next" />
+                        </Calendar.Header>
+                        <Calendar.Grid>
+                          <Calendar.GridHeader>
+                            {(day) => (
+                              <Calendar.HeaderCell>{day}</Calendar.HeaderCell>
+                            )}
+                          </Calendar.GridHeader>
+                          <Calendar.GridBody>
+                            {(date) => <Calendar.Cell date={date} />}
+                          </Calendar.GridBody>
+                        </Calendar.Grid>
+                        <Calendar.YearPickerGrid>
+                          <Calendar.YearPickerGridBody>
+                            {({ year }) => (
+                              <Calendar.YearPickerCell year={year} />
+                            )}
+                          </Calendar.YearPickerGridBody>
+                        </Calendar.YearPickerGrid>
+                      </Calendar>
+                    </DatePicker.Popover>
+                  </DatePicker>
+                </div>
               </div>
             </div>
           </div>

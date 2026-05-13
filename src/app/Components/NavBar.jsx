@@ -16,7 +16,7 @@ const NavBar = () => {
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(session);
+  // console.log(session);
 
   const menuItems = [
     { label: "Home", href: "/" },

@@ -9,10 +9,10 @@ import { useState } from "react";
 const BookingCard = ({ destination }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(user);
+  //   console.log(user);
 
   const [departureDate, setDepartureDate] = useState(today(getLocalTimeZone()));
-  console.log(new Date(departureDate));
+  //   console.log(new Date(departureDate));
 
   const handleBooking = async () => {
     const bookingData = {
@@ -26,9 +26,19 @@ const BookingCard = ({ destination }) => {
       country: destination?.country,
       departureDate: new Date(departureDate),
     };
+    const res = await fetch("http://localhost:8000/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
+    const data = await res.json();
+
+    console.log(data);
   };
 
-  console.log(destination, destination.imageUrl);
+  //   console.log(destination, destination.imageUrl);
 
   return (
     <div>
@@ -110,7 +120,10 @@ const BookingCard = ({ destination }) => {
             </div>
           </div>
 
-          <Button className="w-full h-16 bg-[#0088d1] text-white font-black rounded-xl shadow-[0_10px_30px_-5px_rgba(0,136,209,0.5)] hover:bg-[#0077b6] transition-all uppercase  text-sm">
+          <Button
+            onClick={handleBooking}
+            className="w-full h-16 bg-[#0088d1] text-white font-black rounded-xl shadow-[0_10px_30px_-5px_rgba(0,136,209,0.5)] hover:bg-[#0077b6] transition-all uppercase  text-sm"
+          >
             Book Now
           </Button>
 

@@ -13,13 +13,18 @@ import { IoTrashBin } from "react-icons/io5";
 import { EditModal } from "@/app/Components/EditModal";
 import DeleteAlert from "@/app/Components/DeleteAlert";
 import BookingCard from "@/app/Components/BookingCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
+  const { token } = await auth.api.getToken({
+    headers: await headers(), // you need to pass the headers
+  }); // Get the token from better-auth
   const res = await fetch(`http://localhost:8000/destination/${id}`, {
     headers: {
-      authorization: "yoyo", // Add API key to headers
-    }
+      authorization: `Bearer ${token}`, // Add the token to headers
+    },
   });
   const destination = await res.json();
 

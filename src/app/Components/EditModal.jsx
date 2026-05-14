@@ -14,6 +14,7 @@ import {
 } from "@heroui/react";
 import { LuPencil } from "react-icons/lu";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 export function EditModal({ destination }) {
   const router = useRouter();
@@ -35,10 +36,13 @@ export function EditModal({ destination }) {
     const formData = new FormData(e.currentTarget);
     const updatedData = Object.fromEntries(formData.entries());
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(`http://localhost:8000/destination/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(updatedData),
     });

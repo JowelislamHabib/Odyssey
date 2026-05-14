@@ -21,11 +21,14 @@ const DestinationDetailsPage = async ({ params }) => {
   const { token } = await auth.api.getToken({
     headers: await headers(), // you need to pass the headers
   }); // Get the token from better-auth
-  const res = await fetch(`http://localhost:8000/destination/${id}`, {
-    headers: {
-      authorization: `Bearer ${token}`, // Add the token to headers
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`, // Add the token to headers
+      },
     },
-  });
+  );
   const destination = await res.json();
 
   if (!destination) return <div className="p-20 text-center">Loading...</div>;

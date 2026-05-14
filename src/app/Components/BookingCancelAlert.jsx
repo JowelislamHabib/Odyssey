@@ -12,13 +12,16 @@ const BookingCancelAlert = ({ booking }) => {
     // console.log(tokenData);
 
     console.log(booking.id);
-    const res = await fetch(`http://localhost:8000/bookings/${booking._id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${booking._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
       },
-    });
+    );
     const data = await res.json();
     console.log(data);
     if (res.ok) {

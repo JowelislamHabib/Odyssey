@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 const Banner = () => {
   return (
-    <div className="relative flex min-h-[800px] md:h-[750px] w-full flex-col items-center justify-between overflow-hidden bg-[url('/assets/banner.jpg')] bg-cover bg-center text-white">
+    <div className="relative flex min-h-[800px] md:h-[750px] w-full flex-col items-center justify-between overflow-hidden bg-[url('/assets/Banner.jpg')] bg-cover bg-center text-white">
       {/* Dynamic Overlay */}
       <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[2px]" />
 

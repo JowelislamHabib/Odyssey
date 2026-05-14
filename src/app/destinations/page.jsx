@@ -6,14 +6,14 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
 const DestinationPage = async () => {
-  const { token } = await auth.api.getToken({
-    headers: await headers(), // you need to pass the headers
-  });
+  // const { token } = await auth.api.getToken({
+  //   headers: await headers(), // you need to pass the headers
+  // });
 
-  const res = await fetch("http://localhost:8000/destination", {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, {
+    // headers: {
+    //   authorization: `Bearer ${token}`,
+    // },
   });
   const destinations = await res.json();
 

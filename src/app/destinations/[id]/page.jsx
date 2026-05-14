@@ -17,7 +17,9 @@ import BookingCard from "@/app/Components/BookingCard";
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
   const res = await fetch(`http://localhost:8000/destination/${id}`, {
-    cache: "no-store",
+    headers: {
+      authorization: "yoyo", // Add API key to headers
+    }
   });
   const destination = await res.json();
 

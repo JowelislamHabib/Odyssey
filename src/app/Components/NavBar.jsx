@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import this
+import { usePathname, useRouter } from "next/navigation"; // Import this
 import { Avatar, Button, Dropdown, Label } from "@heroui/react";
 import { LuCompass, LuMenu, LuX } from "react-icons/lu";
 import { authClient } from "@/lib/auth-client";
@@ -11,6 +11,7 @@ import { PiGear } from "react-icons/pi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const NavBar = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname(); // Get current route
 

@@ -23,7 +23,6 @@ const DestinationCard = ({ item }) => {
       </div>
 
       <div className="pt-8 pb-8 px-5 flex flex-col">
-        {/* Header Section: Aligned to your arrow */}
         <div className="mb-5">
           <div className="flex items-center gap-1.5 text-sky-600 font-black text-[9px] uppercase tracking-[0.2em] mb-2">
             <LuMapPin size={10} />

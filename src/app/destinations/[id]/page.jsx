@@ -17,30 +17,22 @@ import { headers } from "next/headers";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
-  let session = null;
-  let token = null;
-
-  try {
-    session = await auth.api.getSession({ headers: await headers() });
-  } catch (err) {}
-
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   const user = session?.user;
   console.log(user);
 
-  try {
-    const tokenRes = await auth.api.getToken({ headers: await headers() });
-    token = tokenRes?.token;
-  } catch (err) {}
-
-  const headersObj = {};
-  if (token) {
-    headersObj.authorization = `Bearer ${token}`;
-  }
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`,
     {
-      headers: headersObj,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
       cache: "no-store",
     },
   );

@@ -4,8 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Featured = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`);
-  const featuredItems = await res.json();
+  let featuredItems = [];
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`);
+    if (res.ok) {
+      featuredItems = await res.json();
+    }
+  } catch (error) {
+    console.error("Failed to fetch featured items:", error);
+  }
 
   return (
     <section className="py-24 bg-white">

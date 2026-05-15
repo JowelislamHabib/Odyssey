@@ -1,23 +1,22 @@
 "use client";
-import { Button, Card, Input, toast } from "@heroui/react";
+import { Button, Card, toast } from "@heroui/react";
 import { LuCalendar, LuCheck } from "react-icons/lu";
 import { authClient } from "@/lib/auth-client";
 import { Calendar, DateField, DatePicker } from "@heroui/react";
 import { getLocalTimeZone, today } from "@internationalized/date";
-
-import { use, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+
 const BookingCard = ({ destination }) => {
   const router = useRouter();
-
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  //   console.log(user);
 
   const [departureDate, setDepartureDate] = useState(today(getLocalTimeZone()));
-  //   console.log(new Date(departureDate));
 
   const handleBooking = async () => {
+    const { data: tokenData } = await authClient.token();
+
     const bookingData = {
       userId: user?.id,
       userName: user?.name,
@@ -31,140 +30,133 @@ const BookingCard = ({ destination }) => {
       category: destination?.category,
     };
 
-    const { data: tokenData } = await authClient.token();
-    console.log(tokenData);
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`, // Add the token to headers
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(bookingData),
     });
-    const data = await res.json();
 
-    console.log(data);
+    // We keep the toast inside the onPress or handleBooking as per your preference
+    // but I've ensured the toast structure matches your original precisely below.
   };
 
-  //   console.log(destination, destination.imageUrl);
-
   return (
-    <div>
-      <div className="lg:col-span-1">
-        <Card className="p-8 rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-200/50 sticky top-8">
-          <div className="mb-6">
-            <span className="text-slate-400 font-bold uppercase text-xs ">
-              Starting from
+    <div className="w-full">
+      <Card className="p-8 rounded-2xl border border-zinc-100 bg-white shadow-2xl shadow-sky-900/5">
+        {/* Pricing */}
+        <div className="mb-8">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
+            Investment
+          </span>
+          <div className="flex items-baseline gap-2 mt-2">
+            <h3 className="text-5xl font-black text-sky-900 tracking-tighter">
+              ${destination?.price}
+            </h3>
+            <span className="text-zinc-500 font-bold text-xs uppercase tracking-widest">
+              / Guest
             </span>
-            <div className="flex items-baseline gap-1 mt-1">
-              <h3 className="text-4xl font-black text-[#0088d1] tracking-tighter">
-                ${destination?.price}
-              </h3>
-              <span className="text-slate-400 font-bold text-sm">
-                / per person
-              </span>
-            </div>
           </div>
+        </div>
 
-          <div className="space-y-2">
-            <p className="text-xs uppercase font-bold text-slate-400 tracking-wider">
-              Departure Date
-            </p>
-            <div className="flex items-center gap-3 border border-slate-200 rounded-2xl px-4 h-16 bg-slate-50 hover:border-sky-300 transition-all">
-              <div className="w-11 h-11 rounded-xl bg-sky-100 flex items-center justify-center shrink-0">
-                <LuCalendar className="text-sky-600" size={20} />
-              </div>
-
-              <div className="flex-1">
-                <div>
-                  <DatePicker
-                    className="w-full"
-                    name="date"
-                    value={departureDate}
-                    onChange={setDepartureDate}
-                  >
-                    <DateField.Group fullWidth>
-                      <DateField.Input>
-                        {(segment) => <DateField.Segment segment={segment} />}
-                      </DateField.Input>
-                      <DateField.Suffix>
-                        <DatePicker.Trigger>
-                          <DatePicker.TriggerIndicator />
-                        </DatePicker.Trigger>
-                      </DateField.Suffix>
-                    </DateField.Group>
-                    <DatePicker.Popover>
-                      <Calendar aria-label="Event date">
-                        <Calendar.Header>
-                          <Calendar.YearPickerTrigger>
-                            <Calendar.YearPickerTriggerHeading />
-                            <Calendar.YearPickerTriggerIndicator />
-                          </Calendar.YearPickerTrigger>
-                          <Calendar.NavButton slot="previous" />
-                          <Calendar.NavButton slot="next" />
-                        </Calendar.Header>
-                        <Calendar.Grid>
-                          <Calendar.GridHeader>
-                            {(day) => (
-                              <Calendar.HeaderCell>{day}</Calendar.HeaderCell>
-                            )}
-                          </Calendar.GridHeader>
-                          <Calendar.GridBody>
-                            {(date) => <Calendar.Cell date={date} />}
-                          </Calendar.GridBody>
-                        </Calendar.Grid>
-                        <Calendar.YearPickerGrid>
-                          <Calendar.YearPickerGridBody>
-                            {({ year }) => (
-                              <Calendar.YearPickerCell year={year} />
-                            )}
-                          </Calendar.YearPickerGridBody>
-                        </Calendar.YearPickerGrid>
-                      </Calendar>
-                    </DatePicker.Popover>
-                  </DatePicker>
-                </div>
-              </div>
+        {/* Date Section */}
+        <div className="space-y-4 mb-8">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
+            Departure Date
+          </p>
+          <div className="flex items-center gap-4 border border-zinc-100 rounded-xl px-4 h-20 bg-zinc-50/50 hover:bg-white hover:border-sky-900 transition-all duration-300">
+            <div className="w-10 h-10 rounded-lg bg-sky-900 flex items-center justify-center shrink-0 shadow-lg shadow-sky-900/20">
+              <LuCalendar className="text-white" size={18} />
             </div>
-          </div>
 
-          <Button
-            onPress={() =>
-              toast.success("You have booked a destination", {
-                actionProps: {
-                  children: "My Bookings",
-                  onPress: () => {
-                    router.push("/my-bookings");
-                  },
-                  className: "bg-success text-success-foreground",
-                },
-                description: "Your booking has been confirmed!",
-              })
-            }
-            onClick={handleBooking}
-            className="w-full h-16 bg-[#0088d1] text-white font-black rounded-xl shadow-[0_10px_30px_-5px_rgba(0,136,209,0.5)] hover:bg-[#0077b6] transition-all uppercase  text-sm"
-          >
-            Book Now
-          </Button>
-
-          <div className="mt-8 space-y-3">
-            {[
-              "Free cancellation up to 7 days",
-              "Travel insurance included",
-              "24/7 customer support",
-            ].map((info, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 text-[13px] font-bold text-slate-500"
+            <div className="flex-1 overflow-hidden">
+              <DatePicker
+                className="w-full"
+                name="date"
+                value={departureDate}
+                onChange={setDepartureDate}
               >
-                <LuCheck className="text-sky-500" size={16} />
-                {info}
-              </div>
-            ))}
+                <DateField.Group className="bg-transparent border-none shadow-none p-0">
+                  <DateField.Input className="font-black text-[11px] uppercase tracking-widest text-zinc-900">
+                    {(segment) => <DateField.Segment segment={segment} />}
+                  </DateField.Input>
+                  <DateField.Suffix>
+                    <DatePicker.Trigger>
+                      <DatePicker.TriggerIndicator className="text-sky-900" />
+                    </DatePicker.Trigger>
+                  </DateField.Suffix>
+                </DateField.Group>
+
+                <DatePicker.Popover>
+                  <Calendar aria-label="Departure Date">
+                    <Calendar.Header>
+                      <Calendar.YearPickerTrigger>
+                        <Calendar.YearPickerTriggerHeading />
+                        <Calendar.YearPickerTriggerIndicator />
+                      </Calendar.YearPickerTrigger>
+                      <Calendar.NavButton slot="previous" />
+                      <Calendar.NavButton slot="next" />
+                    </Calendar.Header>
+                    <Calendar.Grid>
+                      <Calendar.GridHeader>
+                        {(day) => (
+                          <Calendar.HeaderCell className="text-sky-900 font-black text-[10px]">
+                            {day}
+                          </Calendar.HeaderCell>
+                        )}
+                      </Calendar.GridHeader>
+                      <Calendar.GridBody>
+                        {(date) => <Calendar.Cell date={date} />}
+                      </Calendar.GridBody>
+                    </Calendar.Grid>
+                  </Calendar>
+                </DatePicker.Popover>
+              </DatePicker>
+            </div>
           </div>
-        </Card>
-      </div>
+        </div>
+
+        {/* Restore your original toast logic here */}
+        <Button
+          onPress={() =>
+            toast.success("You have booked a destination", {
+              actionProps: {
+                children: "My Bookings",
+                onPress: () => {
+                  router.push("/my-bookings");
+                },
+                className: "bg-success text-success-foreground",
+              },
+              description: "Your booking has been confirmed!",
+            })
+          }
+          onClick={handleBooking}
+          className="w-full h-16 bg-sky-900 text-white font-black rounded-xl shadow-xl shadow-sky-900/20 hover:bg-sky-800 transition-all uppercase tracking-[0.3em] text-[11px] mb-8"
+        >
+          Book Now
+        </Button>
+
+        {/* Trust Indicators */}
+        <div className="space-y-4 pt-8 border-t border-zinc-50">
+          {[
+            "Free cancellation up to 7 days",
+            "Travel insurance included",
+            "24/7 Global concierge",
+          ].map((info, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-zinc-500"
+            >
+              <div className="h-5 w-5 rounded-full bg-sky-50 flex items-center justify-center">
+                <LuCheck className="text-sky-900" size={12} />
+              </div>
+              {info}
+            </div>
+          ))}
+        </div>
+      </Card>
     </div>
   );
 };

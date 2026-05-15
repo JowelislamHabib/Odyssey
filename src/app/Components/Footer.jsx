@@ -29,11 +29,11 @@ const Footer = () => {
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-900 transition-transform duration-500 group-hover:rotate-180">
                 <LuCompass className="text-white size-7" />
               </div>
-              <span className="text-3xl font-black tracking-tighter text-white uppercase">
+              <span className="text-3xl font-bold tracking-tighter text-white uppercase">
                 Odyssey
               </span>
             </Link>
-            <h2 className="text-4xl font-black leading-tight text-white uppercase tracking-tighter">
+            <h2 className="text-4xl font-bold leading-tight text-white uppercase tracking-tighter">
               Your gateway to <br />
               <span className="text-sky-500">travel experiences.</span>
             </h2>
@@ -46,7 +46,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-3 lg:col-span-7">
             {Object.entries(linkGroups).map(([title, links]) => (
               <div key={title}>
-                <h3 className="mb-8 text-[10px] font-black uppercase tracking-[0.3em] text-white">
+                <h3 className="mb-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white">
                   {title}
                 </h3>
                 <ul className="space-y-4 list-none p-0">
@@ -65,7 +65,7 @@ const Footer = () => {
             ))}
 
             <div className="flex flex-col">
-              <h3 className="mb-8 text-[10px] font-black uppercase tracking-[0.3em] text-white">
+              <h3 className="mb-8 text-[10px] font-bold uppercase tracking-[0.3em] text-white">
                 Newsletter
               </h3>
               <div className="flex flex-col gap-3">
@@ -75,7 +75,7 @@ const Footer = () => {
                   aria-label="Subscribe to newsletter"
                   className="bg-zinc-900 text-white rounded-xl **:not-[]:bg-zinc-900 group-data-[hover=true]:bg-zinc-800 border-zinc-800 h-14"
                 />
-                <Button className="bg-sky-900 h-14 font-black uppercase tracking-widest text-white rounded-xl shadow-xl transition-all duration-200 hover:bg-white hover:text-sky-900 active:scale-95 text-xs">
+                <Button className="bg-sky-900 h-14 font-bold uppercase tracking-widest text-white rounded-xl shadow-xl transition-all duration-200 hover:bg-white hover:text-sky-900 active:scale-95 text-sms">
                   Subscribe
                 </Button>
               </div>
@@ -86,7 +86,7 @@ const Footer = () => {
         <Separator className="bg-zinc-900" />
 
         <div className="mt-12 flex flex-col items-center justify-between gap-8 md:flex-row">
-          <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+          <p className="text-sms font-bold uppercase tracking-widest text-zinc-500">
             © 2026 <span className="text-white">Odyssey</span>. All rights
             reserved.
           </p>

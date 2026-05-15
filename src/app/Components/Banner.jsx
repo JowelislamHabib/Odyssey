@@ -18,10 +18,10 @@ const Banner = () => {
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 px-6 text-center pt-24 md:pt-0">
         <div className="space-y-4">
-          <h1 className="text-4xl font-black sm:text-5xl md:text-8xl uppercase tracking-tighter leading-tight">
+          <h1 className="text-4xl font-bold sm:text-5xl md:text-8xl uppercase tracking-tighter leading-tight">
             Discover Your <br className="hidden sm:block" /> Next Adventure
           </h1>
-          <p className="mx-auto max-w-2xl text-base font-medium text-zinc-200 sm:text-lg md:text-xl tracking-wide opacity-90">
+          <p className="mx-auto max-w-2xl text-base font-medium text-zinc-200 sm:text-lg md:text-sml tracking-wide opacity-90">
             Explore breathtaking destinations and create unforgettable memories
             with our curated travel experiences.
           </p>
@@ -112,7 +112,7 @@ const Banner = () => {
             </div>
           </div>
 
-          <Button className="mt-2 md:mt-0 w-full md:w-60 h-16 flex items-center justify-center bg-sky-900 text-white font-black rounded-xl md:ml-auto shadow-xl transition-all duration-200 hover:bg-black hover:scale-[1.02] active:scale-95 text-sm uppercase tracking-widest">
+          <Button className="mt-2 md:mt-0 w-full md:w-60 h-16 flex items-center justify-center bg-sky-900 text-white font-bold rounded-xl md:ml-auto shadow-xl transition-all duration-200 hover:bg-black hover:scale-[1.02] active:scale-95 text-sm uppercase tracking-widest">
             <LuSearch className="mr-2 size-5" />
             Find Trip
           </Button>

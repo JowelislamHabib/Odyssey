@@ -34,7 +34,7 @@ const DestinationDetailsPage = async ({ params }) => {
 
   if (!destination)
     return (
-      <div className="py-40 text-center font-black uppercase tracking-[0.3em] text-zinc-400">
+      <div className="py-40 text-center font-bold uppercase tracking-[0.3em] text-zinc-400">
         Loading Destination...
       </div>
     );
@@ -44,7 +44,7 @@ const DestinationDetailsPage = async ({ params }) => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
         <Link
           href="/destinations"
-          className="group flex items-center gap-2 text-sky-900 transition-colors font-black text-[10px] uppercase tracking-[0.2em]"
+          className="group flex items-center gap-2 text-sky-900 transition-colors font-bold text-[10px] uppercase tracking-[0.2em]"
         >
           <LuArrowLeft
             size={16}
@@ -67,7 +67,7 @@ const DestinationDetailsPage = async ({ params }) => {
           className="object-cover"
           priority
         />
-        <div className="absolute top-8 left-8 bg-sky-900 text-white text-[10px] font-black px-4 py-1.5 rounded-xl uppercase tracking-[0.2em] shadow-2xl">
+        <div className="absolute top-8 left-8 bg-sky-900 text-white text-[10px] font-bold px-4 py-1.5 rounded-xl uppercase tracking-[0.2em] shadow-2xl">
           Premium Experience
         </div>
       </div>
@@ -75,27 +75,27 @@ const DestinationDetailsPage = async ({ params }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2 space-y-12">
           <div className="space-y-4">
-            <div className="flex items-center gap-3 text-sky-900 font-black uppercase text-[10px] tracking-[0.3em]">
+            <div className="flex items-center gap-3 text-sky-900 font-bold uppercase text-[10px] tracking-[0.3em]">
               <div className="h-[2px] w-8 bg-sky-900" />
               <LuMapPin size={14} />
               {destination?.country}
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-zinc-900 tracking-tighter uppercase leading-[0.85]">
+            <h1 className="text-5xl md:text-7xl font-bold text-zinc-900 tracking-tighter uppercase leading-[0.85]">
               {destination?.destinationName}
             </h1>
 
             <div className="flex flex-wrap items-center gap-8 pt-4">
               <div className="flex items-center gap-2">
                 <LuStar size={18} className="fill-amber-400 text-amber-400" />
-                <span className="font-black text-zinc-900 text-sm uppercase">
+                <span className="font-bold text-zinc-900 text-sm uppercase">
                   4.9
                 </span>
                 <span className="text-zinc-400 font-bold text-[10px] uppercase tracking-widest">
                   (234 reviews)
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-sky-900 font-black text-[10px] uppercase tracking-[0.1em]">
+              <div className="flex items-center gap-2 text-sky-900 font-bold text-[10px] uppercase tracking-[0.1em]">
                 <LuCalendar size={18} />
                 {destination?.duration} Days /{" "}
                 {parseInt(destination?.duration) - 1} Nights
@@ -106,7 +106,7 @@ const DestinationDetailsPage = async ({ params }) => {
           <Separator className="bg-zinc-100" />
 
           <section className="space-y-6">
-            <h2 className="text-[10px] font-black text-sky-900 uppercase tracking-[0.4em]">
+            <h2 className="text-[10px] font-bold text-sky-900 uppercase tracking-[0.4em]">
               The Overview
             </h2>
             <p className="text-zinc-500 leading-relaxed text-lg font-medium max-w-3xl">
@@ -115,7 +115,7 @@ const DestinationDetailsPage = async ({ params }) => {
           </section>
 
           <section className="space-y-8 bg-sky-50/50 p-10 rounded-2xl border border-sky-100">
-            <h2 className="text-[10px] font-black text-sky-900 uppercase tracking-[0.4em]">
+            <h2 className="text-[10px] font-bold text-sky-900 uppercase tracking-[0.4em]">
               Journey Highlights
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

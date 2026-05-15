@@ -30,7 +30,7 @@ const BookingCancelAlert = ({ booking }) => {
 
   return (
     <AlertDialog>
-      <Button className="flex items-center gap-2 px-8 h-14 rounded-xl border-2 border-zinc-100 bg-white font-black text-[11px] uppercase text-zinc-400 hover:border-rose-600 hover:text-rose-600 transition-all duration-300">
+      <Button className="flex items-center gap-2 px-8 h-14 rounded-xl border-2 border-zinc-100 bg-white font-bold text-[11px] uppercase text-zinc-400 hover:border-rose-600 hover:text-rose-600 transition-all duration-300">
         <LuTrash2 size={16} />
         Cancel Trip
       </Button>
@@ -42,7 +42,7 @@ const BookingCancelAlert = ({ booking }) => {
 
             <AlertDialog.Header className="flex flex-col items-center pt-10 px-8">
               <AlertDialog.Icon status="danger" className="mb-4" />
-              <AlertDialog.Heading className="text-xl font-black text-zinc-900 uppercase leading-tight text-center">
+              <AlertDialog.Heading className="text-sml font-bold text-zinc-900 uppercase leading-tight text-center">
                 Abort this Odyssey?
               </AlertDialog.Heading>
             </AlertDialog.Header>
@@ -50,7 +50,7 @@ const BookingCancelAlert = ({ booking }) => {
             <AlertDialog.Body className="px-10 py-6 text-center">
               <p className="text-zinc-500 text-sm font-medium leading-relaxed">
                 You are about to cancel your trip to{" "}
-                <span className="text-sky-900 font-black uppercase">
+                <span className="text-sky-900 font-bold uppercase">
                   {booking.destinationName}
                 </span>
                 . This will release your reservation immediately.
@@ -60,14 +60,14 @@ const BookingCancelAlert = ({ booking }) => {
             <AlertDialog.Footer className="p-10 pt-2 flex gap-3">
               <Button
                 slot="close"
-                className="flex-1 h-14 rounded-xl font-black uppercase text-[10px] text-zinc-400 bg-zinc-100 hover:bg-zinc-200 transition-colors"
+                className="flex-1 h-14 rounded-xl font-bold uppercase text-[10px] text-zinc-400 bg-zinc-100 hover:bg-zinc-200 transition-colors"
               >
                 Keep Trip
               </Button>
               <Button
                 onClick={handleCancelBooking}
                 slot="close"
-                className="flex-1 h-14 bg-rose-600 text-white font-black rounded-xl shadow-xl shadow-rose-600/20 hover:bg-rose-700 transition-all uppercase text-[10px]"
+                className="flex-1 h-14 bg-rose-600 text-white font-bold rounded-xl shadow-xl shadow-rose-600/20 hover:bg-rose-700 transition-all uppercase text-[10px]"
               >
                 Confirm Cancel
               </Button>

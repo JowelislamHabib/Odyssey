@@ -60,11 +60,11 @@ const Testimonial = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-sky-900">
               <div className="h-1 w-12 bg-sky-900" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em]">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em]">
                 Testimonials
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-zinc-900 uppercase tracking-tighter leading-none">
+            <h2 className="text-4xl md:text-6xl font-bold text-zinc-900 uppercase tracking-tighter leading-none">
               Voices of Our <br className="md:hidden" /> Explorers
             </h2>
           </div>
@@ -125,7 +125,7 @@ const Testimonial = () => {
                     </Avatar>
 
                     <div className="overflow-hidden">
-                      <h4 className="text-sm font-black text-zinc-900 uppercase tracking-tight truncate">
+                      <h4 className="text-sm font-bold text-zinc-900 uppercase tracking-tight truncate">
                         {t.name}
                       </h4>
 

@@ -32,7 +32,7 @@ const DeleteAlert = ({ destination }) => {
   return (
     <div>
       <AlertDialog>
-        <Button className="font-black border-2 border-rose-600 rounded-xl px-6 h-12 bg-white text-rose-600 hover:bg-rose-600 hover:text-white transition-all uppercase text-[10px]">
+        <Button className="font-bold border-2 border-rose-600 rounded-xl px-6 h-12 bg-white text-rose-600 hover:bg-rose-600 hover:text-white transition-all uppercase text-[10px]">
           <IoTrashBin size={14} />
           Delete
         </Button>
@@ -43,7 +43,7 @@ const DeleteAlert = ({ destination }) => {
               <AlertDialog.CloseTrigger />
               <AlertDialog.Header>
                 <AlertDialog.Icon status="danger" />
-                <AlertDialog.Heading className="font-black uppercase text-zinc-900">
+                <AlertDialog.Heading className="font-bold uppercase text-zinc-900">
                   Delete {destinationName} permanently?
                 </AlertDialog.Heading>
               </AlertDialog.Header>
@@ -57,13 +57,13 @@ const DeleteAlert = ({ destination }) => {
               <AlertDialog.Footer>
                 <Button
                   slot="close"
-                  className="font-black uppercase text-[10px] bg-zinc-100 text-zinc-500 rounded-xl px-6 h-12"
+                  className="font-bold uppercase text-[10px] bg-zinc-100 text-zinc-500 rounded-xl px-6 h-12"
                 >
                   Cancel
                 </Button>
                 <Button
                   slot="close"
-                  className="font-black uppercase text-[10px] bg-rose-600 text-white rounded-xl px-6 h-12 shadow-lg shadow-rose-600/20"
+                  className="font-bold uppercase text-[10px] bg-rose-600 text-white rounded-xl px-6 h-12 shadow-lg shadow-rose-600/20"
                   onClick={handleDelete}
                 >
                   Delete

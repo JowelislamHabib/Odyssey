@@ -33,11 +33,11 @@ const MyBookingsPage = async () => {
       <div className="mb-16 border-b border-zinc-100 pb-10">
         <div className="flex items-center gap-3 text-sky-900 mb-4">
           <div className="h-1 w-10 bg-sky-900" />
-          <span className="text-[10px] font-black uppercase">
+          <span className="text-[10px] font-bold uppercase">
             Your Itinerary
           </span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-black text-zinc-900 uppercase leading-none">
+        <h1 className="text-5xl md:text-6xl font-bold text-zinc-900 uppercase leading-none">
           My Bookings
         </h1>
         <p className="text-zinc-400 font-bold mt-4 uppercase text-[10px]">
@@ -59,7 +59,7 @@ const MyBookingsPage = async () => {
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute top-6 left-6">
-                <span className="px-4 py-2 rounded-xl font-black text-[9px] uppercase bg-sky-900 text-white shadow-xl">
+                <span className="px-4 py-2 rounded-xl font-bold text-[9px] uppercase bg-sky-900 text-white shadow-xl">
                   {booking.category}
                 </span>
               </div>
@@ -71,22 +71,22 @@ const MyBookingsPage = async () => {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sky-900">
                       <LuMapPin size={14} />
-                      <span className="text-[10px] font-black uppercase">
+                      <span className="text-[10px] font-bold uppercase">
                         {booking.country}
                       </span>
                     </div>
-                    <h2 className="text-3xl font-black text-zinc-900 uppercase leading-tight">
+                    <h2 className="text-3xl font-bold text-zinc-900 uppercase leading-tight">
                       {booking.destinationName}
                     </h2>
                   </div>
-                  <div className="text-4xl font-black text-sky-900 leading-none">
+                  <div className="text-4xl font-bold text-sky-900 leading-none">
                     ${booking.price}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
                   <div className="space-y-4">
-                    <p className="text-[9px] font-black uppercase text-zinc-400">
+                    <p className="text-[9px] font-bold uppercase text-zinc-400">
                       Traveler
                     </p>
                     <div className="flex items-center gap-3">
@@ -103,7 +103,7 @@ const MyBookingsPage = async () => {
                         )}
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-sm font-black text-zinc-900 uppercase">
+                        <span className="text-sm font-bold text-zinc-900 uppercase">
                           {booking.userName}
                         </span>
                         <span className="text-[9px] text-zinc-400 font-bold uppercase">
@@ -114,14 +114,14 @@ const MyBookingsPage = async () => {
                   </div>
 
                   <div className="space-y-4">
-                    <p className="text-[9px] font-black uppercase text-zinc-400">
+                    <p className="text-[9px] font-bold uppercase text-zinc-400">
                       Departure
                     </p>
                     <div className="flex items-center gap-4">
                       <div className="p-3 bg-sky-50 text-sky-900 rounded-xl">
                         <LuCalendar size={20} />
                       </div>
-                      <span className="text-sm font-black text-zinc-900 uppercase">
+                      <span className="text-sm font-bold text-zinc-900 uppercase">
                         {new Date(booking.departureDate).toLocaleDateString(
                           "en-US",
                           { month: "short", day: "numeric", year: "numeric" },
@@ -131,14 +131,14 @@ const MyBookingsPage = async () => {
                   </div>
 
                   <div className="space-y-4">
-                    <p className="text-[9px] font-black uppercase text-zinc-400">
+                    <p className="text-[9px] font-bold uppercase text-zinc-400">
                       Reference
                     </p>
                     <div className="flex items-center gap-4">
                       <div className="p-3 bg-zinc-50 text-zinc-400 rounded-xl border border-zinc-100">
                         <LuHash size={20} />
                       </div>
-                      <span className="text-sm font-black text-zinc-900 font-mono">
+                      <span className="text-sm font-bold text-zinc-900 font-mono">
                         #{booking._id?.slice(-8)?.toUpperCase()}
                       </span>
                     </div>
@@ -150,7 +150,7 @@ const MyBookingsPage = async () => {
                 <BookingCancelAlert booking={booking} />
                 <Link
                   href={`/destinations/${booking.destinationId}`}
-                  className="flex items-center gap-3 px-10 h-14 rounded-xl bg-zinc-900 text-white font-black text-[11px] uppercase transition-all hover:bg-sky-900 shadow-xl shadow-zinc-900/10 no-underline"
+                  className="flex items-center gap-3 px-10 h-14 rounded-xl bg-zinc-900 text-white font-bold text-[11px] uppercase transition-all hover:bg-sky-900 shadow-xl shadow-zinc-900/10 no-underline"
                 >
                   <LuEye size={16} />
                   View Trip
@@ -166,14 +166,14 @@ const MyBookingsPage = async () => {
           <div className="p-8 bg-white rounded-2xl shadow-xl mb-6 text-zinc-200">
             <LuMapPin size={48} />
           </div>
-          <h3 className="text-2xl font-black text-zinc-900 uppercase">
+          <h3 className="text-2xl font-bold text-zinc-900 uppercase">
             No Active Bookings
           </h3>
-          <p className="text-zinc-400 font-bold mt-2 mb-10 uppercase text-xs">
+          <p className="text-zinc-400 font-bold mt-2 mb-10 uppercase text-sms">
             Your next adventure is waiting to be found.
           </p>
           <Link href="/destinations">
-            <Button className="bg-sky-900 px-12 h-16 font-black text-white rounded-xl uppercase text-sm shadow-2xl shadow-sky-900/20">
+            <Button className="bg-sky-900 px-12 h-16 font-bold text-white rounded-xl uppercase text-sm shadow-2xl shadow-sky-900/20">
               Find a Destination
             </Button>
           </Link>

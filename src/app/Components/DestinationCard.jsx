@@ -17,18 +17,18 @@ const DestinationCard = ({ item }) => {
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute top-5 left-5 z-10 bg-sky-900 text-white text-[9px] font-black px-3 py-1 rounded-lg uppercase tracking-[0.2em] shadow-lg">
+        <div className="absolute top-5 left-5 z-10 bg-sky-900 text-white text-[9px] font-bold px-3 py-1 rounded-lg uppercase tracking-[0.2em] shadow-lg">
           {item?.category}
         </div>
       </div>
 
       <div className="pt-8 pb-8 px-5 flex flex-col">
         <div className="mb-5">
-          <div className="flex items-center gap-1.5 text-sky-600 font-black text-[9px] uppercase tracking-[0.2em] mb-2">
+          <div className="flex items-center gap-1.5 text-sky-600 font-bold text-[9px] uppercase tracking-[0.2em] mb-2">
             <LuMapPin size={10} />
             {item?.country}
           </div>
-          <h3 className="text-3xl font-black text-zinc-900 uppercase tracking-tighter leading-[0.9]">
+          <h3 className="text-3xl font-bold text-zinc-900 uppercase tracking-tighter leading-[0.9]">
             {item?.destinationName}
           </h3>
         </div>
@@ -38,22 +38,22 @@ const DestinationCard = ({ item }) => {
         </p>
 
         <div className="flex items-center justify-between pt-6 border-t border-zinc-100 mb-8">
-          <div className="flex items-center gap-2 text-zinc-900 font-black text-[10px] uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-zinc-900 font-bold text-[10px] uppercase tracking-wider">
             <LuClock size={14} className="text-sky-900" />
             {item?.duration} Days
           </div>
           <div className="flex flex-col items-end">
-            <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest leading-none mb-1">
+            <span className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none mb-1">
               Starting At
             </span>
-            <span className="text-2xl font-black text-sky-900 tracking-tighter leading-none">
+            <span className="text-2xl font-bold text-sky-900 tracking-tighter leading-none">
               ${item?.price}
             </span>
           </div>
         </div>
 
         <Link href={`/destinations/${item._id}`} className="w-full">
-          <Button className="w-full h-14 bg-sky-900 text-white hover:bg-sky-800 font-black rounded-xl transition-all uppercase tracking-[0.2em] text-[11px] group/btn shadow-lg shadow-sky-900/10">
+          <Button className="w-full h-14 bg-sky-900 text-white hover:bg-sky-800 font-bold rounded-xl transition-all uppercase tracking-[0.2em] text-[11px] group/btn shadow-lg shadow-sky-900/10">
             Explore Destination
             <LuArrowRight
               size={16}

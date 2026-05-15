@@ -27,7 +27,7 @@ const AdditionalService = () => {
       <div className="container mx-auto px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row items-stretch">
           <div className="lg:w-1/4 py-12 lg:py-16 flex items-center lg:border-r border-white/10 pr-0 lg:pr-10">
-            <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter leading-none text-center lg:text-left w-full">
+            <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tighter leading-none text-center lg:text-left w-full">
               Why Book <br className="hidden lg:block" /> With Us?
             </h2>
           </div>
@@ -44,7 +44,7 @@ const AdditionalService = () => {
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className="text-sm font-black uppercase tracking-widest text-white leading-tight">
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-white leading-tight">
                       {stat.title}
                     </h3>
                     <p className="text-[10px] font-bold text-sky-100/60 leading-relaxed uppercase tracking-wider">

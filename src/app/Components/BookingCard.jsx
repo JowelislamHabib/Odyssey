@@ -44,21 +44,21 @@ const BookingCard = ({ destination }) => {
     <div className="w-full">
       <Card className="p-8 rounded-2xl border border-zinc-100 bg-white shadow-2xl shadow-sky-900/5">
         <div className="mb-8">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
             Investment
           </span>
           <div className="flex items-baseline gap-2 mt-2">
-            <h3 className="text-5xl font-black text-sky-900 tracking-tighter">
+            <h3 className="text-5xl font-bold text-sky-900 tracking-tighter">
               ${destination?.price}
             </h3>
-            <span className="text-zinc-500 font-bold text-xs uppercase tracking-widest">
+            <span className="text-zinc-500 font-bold text-sms uppercase tracking-widest">
               / Guest
             </span>
           </div>
         </div>
 
         <div className="space-y-4 mb-8">
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
             Departure Date
           </p>
           <div className="flex items-center gap-4 border border-zinc-100 rounded-xl px-4 h-20 bg-zinc-50/50 hover:bg-white hover:border-sky-900 transition-all duration-300">
@@ -74,7 +74,7 @@ const BookingCard = ({ destination }) => {
                 onChange={setDepartureDate}
               >
                 <DateField.Group className="bg-transparent border-none shadow-none p-0">
-                  <DateField.Input className="font-black text-[11px] uppercase tracking-widest text-zinc-900">
+                  <DateField.Input className="font-bold text-[11px] uppercase tracking-widest text-zinc-900">
                     {(segment) => <DateField.Segment segment={segment} />}
                   </DateField.Input>
                   <DateField.Suffix>
@@ -97,7 +97,7 @@ const BookingCard = ({ destination }) => {
                     <Calendar.Grid>
                       <Calendar.GridHeader>
                         {(day) => (
-                          <Calendar.HeaderCell className="text-sky-900 font-black text-[10px]">
+                          <Calendar.HeaderCell className="text-sky-900 font-bold text-[10px]">
                             {day}
                           </Calendar.HeaderCell>
                         )}
@@ -127,7 +127,7 @@ const BookingCard = ({ destination }) => {
             })
           }
           onClick={handleBooking}
-          className="w-full h-16 bg-sky-900 text-white font-black rounded-xl shadow-xl shadow-sky-900/20 hover:bg-sky-800 transition-all uppercase tracking-[0.3em] text-[11px] mb-8"
+          className="w-full h-16 bg-sky-900 text-white font-bold rounded-xl shadow-xl shadow-sky-900/20 hover:bg-sky-800 transition-all uppercase tracking-[0.3em] text-[11px] mb-8"
         >
           Book Now
         </Button>
@@ -140,7 +140,7 @@ const BookingCard = ({ destination }) => {
           ].map((info, i) => (
             <div
               key={i}
-              className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-zinc-500"
+              className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-zinc-500"
             >
               <div className="h-5 w-5 rounded-full bg-sky-50 flex items-center justify-center">
                 <LuCheck className="text-sky-900" size={12} />

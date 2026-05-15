@@ -34,7 +34,7 @@ const NavBar = () => {
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-900 transition-transform duration-500 group-hover:rotate-180">
               <LuCompass className="text-white size-7" />
             </div>
-            <span className="text-3xl font-black tracking-tighter text-sky-900 uppercase">
+            <span className="text-3xl font-bold tracking-tighter text-sky-900 uppercase">
               Odyssey
             </span>
           </Link>
@@ -83,7 +83,7 @@ const NavBar = () => {
                   align="center"
                 >
                   <div className="px-4 py-4 mb-2 bg-sky-900 rounded-xl text-white">
-                    <p className="text-xs font-medium opacity-80 mb-1 leading-none">
+                    <p className="text-sms font-medium opacity-80 mb-1 leading-none">
                       Logged in as
                     </p>
                     <p className="text-sm font-bold truncate leading-none">
@@ -181,7 +181,7 @@ const NavBar = () => {
               key={item.label}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className={`block text-2xl font-black no-underline ${pathname === item.href ? "text-sky-900" : "text-zinc-300"}`}
+              className={`block text-2xl font-bold no-underline ${pathname === item.href ? "text-sky-900" : "text-zinc-300"}`}
             >
               {item.label}
             </Link>

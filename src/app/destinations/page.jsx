@@ -15,11 +15,11 @@ const DestinationPage = async () => {
         <div className="space-y-4">
           <div className="flex items-center gap-3 text-sky-900">
             <div className="h-1 w-12 bg-sky-900" />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em]">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em]">
               Global Catalog
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-zinc-900 uppercase tracking-tighter leading-none">
+          <h1 className="text-4xl md:text-6xl font-bold text-zinc-900 uppercase tracking-tighter leading-none">
             All <br className="md:hidden" /> Destinations
           </h1>
           <p className="text-sky-900/60 font-bold uppercase text-[10px] tracking-[0.2em]">
@@ -35,7 +35,7 @@ const DestinationPage = async () => {
             <Input
               type="text"
               placeholder="SEARCH DESTINATIONS..."
-              className="h-14 w-full bg-sky-50/50 border-none rounded-xl pl-12 font-black text-[10px] tracking-widest uppercase text-sky-900 placeholder:text-sky-900/40 focus:bg-white focus:ring-2 focus:ring-sky-900/10 transition-all"
+              className="h-14 w-full bg-sky-50/50 border-none rounded-xl pl-12 font-bold text-[10px] tracking-widest uppercase text-sky-900 placeholder:text-sky-900/40 focus:bg-white focus:ring-2 focus:ring-sky-900/10 transition-all"
             />
           </div>
           <Button
@@ -49,18 +49,18 @@ const DestinationPage = async () => {
 
       <div className="flex gap-16 mb-16 pb-12 border-b border-sky-100">
         <div className="flex flex-col gap-2">
-          <span className="text-[10px] font-black text-sky-900/50 uppercase tracking-[0.3em]">
+          <span className="text-[10px] font-bold text-sky-900/50 uppercase tracking-[0.3em]">
             Total Trips
           </span>
-          <span className="text-4xl font-black text-sky-900 tracking-tighter">
+          <span className="text-4xl font-bold text-sky-900 tracking-tighter">
             {destinations.length}
           </span>
         </div>
         <div className="flex flex-col gap-2">
-          <span className="text-[10px] font-black text-sky-900/50 uppercase tracking-[0.3em]">
+          <span className="text-[10px] font-bold text-sky-900/50 uppercase tracking-[0.3em]">
             Countries
           </span>
-          <span className="text-4xl font-black text-sky-900 tracking-tighter">
+          <span className="text-4xl font-bold text-sky-900 tracking-tighter">
             {new Set(destinations.map((d) => d.country)).size}
           </span>
         </div>
@@ -78,7 +78,7 @@ const DestinationPage = async () => {
             <LuSearch size={32} />
           </div>
           <div className="space-y-2">
-            <p className="text-sky-900 font-black uppercase tracking-[0.4em] text-[10px]">
+            <p className="text-sky-900 font-bold uppercase tracking-[0.4em] text-[10px]">
               No results found
             </p>
             <p className="text-sky-900/40 font-medium text-sm">

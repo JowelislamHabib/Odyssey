@@ -14,17 +14,17 @@ const Featured = async () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-sky-900">
               <div className="h-1 w-12 bg-sky-900" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em]">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em]">
                 Staff Picks
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-zinc-900 uppercase tracking-tighter leading-none">
+            <h2 className="text-4xl md:text-6xl font-bold text-zinc-900 uppercase tracking-tighter leading-none">
               Featured <br className="md:hidden" /> Destinations
             </h2>
           </div>
           <Link
             href="/destinations"
-            className="group flex items-center gap-3 text-xs font-black uppercase tracking-widest text-zinc-400 hover:text-sky-900 transition-all duration-200 no-underline"
+            className="group flex items-center gap-3 text-sms font-bold uppercase tracking-widest text-zinc-400 hover:text-sky-900 transition-all duration-200 no-underline"
           >
             Explore All
             <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 group-hover:bg-zinc-900 group-hover:text-white transition-all">
@@ -47,7 +47,7 @@ const Featured = async () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
-                <div className="absolute top-6 left-6 z-10 bg-sky-900 text-white text-[10px] font-black px-4 py-2 rounded-lg uppercase tracking-widest shadow-lg">
+                <div className="absolute top-6 left-6 z-10 bg-sky-900 text-white text-[10px] font-bold px-4 py-2 rounded-lg uppercase tracking-widest shadow-lg">
                   {item?.category}
                 </div>
 
@@ -55,26 +55,26 @@ const Featured = async () => {
 
                 <div className="absolute top-6 right-6 flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg shadow-xl">
                   <LuStar className="text-amber-500 fill-amber-500" size={14} />
-                  <span className="text-xs font-black text-zinc-900">4.5</span>
+                  <span className="text-sms font-bold text-zinc-900">4.5</span>
                 </div>
 
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="flex items-center gap-2 text-sky-400 mb-2">
                     <LuMapPin size={16} />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
                       {item.country}
                     </span>
                   </div>
-                  <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-6">
+                  <h3 className="text-3xl font-bold text-white uppercase tracking-tighter mb-6">
                     {item.destinationName}
                   </h3>
 
                   <div className="flex items-center justify-between pt-6 border-t border-white/10">
                     <div className="flex flex-col">
-                      <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest leading-none mb-1">
+                      <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest leading-none mb-1">
                         Starting At
                       </span>
-                      <span className="text-2xl font-black text-white">
+                      <span className="text-2xl font-bold text-white">
                         ${item.price}
                       </span>
                     </div>

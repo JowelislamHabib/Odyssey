@@ -70,7 +70,7 @@ const LoginPage = () => {
               }
               className="space-y-2"
             >
-              <label className="text-stone-900 text-xs font-black uppercase tracking-widest ml-1">
+              <label className="text-stone-900 text-sms font-bold uppercase tracking-widest ml-1">
                 Email Address
               </label>
               <div className="relative flex items-center">
@@ -94,7 +94,7 @@ const LoginPage = () => {
               className="space-y-2"
             >
               <div className="flex justify-between items-center ml-1">
-                <label className="text-stone-900 text-xs font-black uppercase tracking-widest">
+                <label className="text-stone-900 text-sms font-bold uppercase tracking-widest">
                   Password
                 </label>
               </div>
@@ -113,7 +113,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              className="w-full py-5 bg-stone-900 text-stone-50 rounded-xl font-bold text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-sky-500 transition-all active:scale-[0.98] shadow-xl shadow-stone-200 mt-2"
+              className="w-full py-5 bg-stone-900 text-stone-50 rounded-xl font-bold text-sms uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-sky-500 transition-all active:scale-[0.98] shadow-xl shadow-stone-200 mt-2"
             >
               Secure Login
               <IoArrowForward size={18} />
@@ -124,7 +124,7 @@ const LoginPage = () => {
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-stone-100"></div>
             </div>
-            <div className="relative flex justify-center text-[10px] uppercase tracking-[0.3em] font-black">
+            <div className="relative flex justify-center text-[10px] uppercase tracking-[0.3em] font-bold">
               <span className="bg-white px-4 text-stone-300">or</span>
             </div>
           </div>
@@ -159,7 +159,7 @@ const LoginPage = () => {
               Don't have an account?
               <Link
                 href="/register"
-                className="text-stone-900 font-black hover:text-sky-500 transition-colors underline decoration-sky-500/30 underline-offset-4"
+                className="text-stone-900 font-bold hover:text-sky-500 transition-colors underline decoration-sky-500/30 underline-offset-4"
               >
                 Create one now
               </Link>
@@ -170,7 +170,7 @@ const LoginPage = () => {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="text-stone-900/40 text-xs font-bold uppercase tracking-[0.2em] hover:text-stone-900"
+            className="text-stone-900/40 text-sms font-bold uppercase tracking-[0.2em] hover:text-stone-900"
           >
             ← Back to Home
           </Link>

@@ -113,7 +113,7 @@ const Testimonial = () => {
                   </div>
 
                   <p className="text-lg font-medium text-zinc-600 leading-relaxed pr-10">
-                    "{t.content}"
+                    {t.content}&quot;
                   </p>
 
                   <div className="flex items-center gap-4 pt-6 border-t border-sky-50 transition-colors group-hover:border-sky-100">

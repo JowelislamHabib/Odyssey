@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Button, Separator } from "@heroui/react";
 import {
@@ -35,7 +33,7 @@ const Banner = () => {
           </Link>
           <Button
             variant="flat"
-            className="w-full sm:w-auto bg-sky-900/40 px-10 py-8 font-bold text-white backdrop-blur-md rounded-xl uppercase text-sm tracking-widest border border-white/20 transition-all duration-200 hover:bg-sky-900/60 hover:scale-[1.02] active:scale-95"
+            className="w-full sm:w-auto bg-sky-900/40 px-10 py-8 font-bold text-white backdrop-blur-md rounded-xl uppercase text-sm tracking-widest border border-white/20"
           >
             View Offers
           </Button>

@@ -23,7 +23,7 @@ const DestinationPage = async () => {
             All <br className="md:hidden" /> Destinations
           </h1>
           <p className="text-sky-900/60 font-bold uppercase text-[10px] tracking-[0.2em]">
-            Exploring {destinations.length} curated world-class experiences
+            Exploring {destinations?.length} curated world-class experiences
           </p>
         </div>
 

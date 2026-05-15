@@ -63,24 +63,24 @@ const ProfileDashboard = () => {
                 { id: "settings", label: "Settings", icon: <LuSettings /> },
               ].map((item) => (
                 <button
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id)}
+                  key={item?.id}
+                  onClick={() => setActiveTab(item?.id)}
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-lg transition-all ${
-                    activeTab === item.id
+                    activeTab === item?.id
                       ? "bg-sky-600 text-white shadow-lg shadow-sky-100"
                       : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-sml">{item.icon}</span>
+                    <span className="text-sml">{item?.icon}</span>
                     <span className="text-sm font-bold uppercase tracking-widest">
-                      {item.label}
+                      {item?.label}
                     </span>
                   </div>
                   <LuChevronRight
                     size={14}
                     className={
-                      activeTab === item.id ? "opacity-100" : "opacity-0"
+                      activeTab === item?.id ? "opacity-100" : "opacity-0"
                     }
                   />
                 </button>
@@ -121,14 +121,14 @@ const ProfileDashboard = () => {
                 >
                   <div>
                     <p className="text-[10px] font-bold uppercase text-slate-400 tracking-widest mb-1">
-                      {stat.label}
+                      {stat?.label}
                     </p>
                     <p className="text-3xl font-bold text-slate-900">
-                      {stat.value}
+                      {stat?.value}
                     </p>
                   </div>
                   <div className="size-12 bg-slate-50 text-slate-400 rounded-xl flex items-center justify-center text-sml group-hover:bg-sky-50 group-hover:text-sky-600 transition-all">
-                    {stat.icon}
+                    {stat?.icon}
                   </div>
                 </div>
               ))}

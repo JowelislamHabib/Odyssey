@@ -25,7 +25,7 @@ const NotFound = () => {
               Lost in Paradise?
             </h2>
             <p className="text-slate-500 font-bold uppercase text-sm tracking-[0.2em]">
-              The destination you are looking for doesn't exist or has moved.
+              The destination you are looking for doesn&apos;t exist or has moved.
             </p>
           </div>
 

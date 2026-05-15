@@ -8,81 +8,87 @@ const Featured = async () => {
   const featuredItems = await res.json();
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6 lg:px-10">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-sky-600">
-              <div className="h-1 w-10 bg-sky-600 rounded-full" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 text-sky-900">
+              <div className="h-1 w-12 bg-sky-900" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">
                 Staff Picks
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">
-              Featured Destinations
+            <h2 className="text-4xl md:text-6xl font-black text-zinc-900 uppercase tracking-tighter leading-none">
+              Featured <br className="md:hidden" /> Destinations
             </h2>
           </div>
           <Link
             href="/destinations"
-            className="group flex items-center gap-2 text-sm font-black uppercase tracking-widest text-slate-400 hover:text-sky-600 transition-colors no-underline"
+            className="group flex items-center gap-3 text-xs font-black uppercase tracking-widest text-zinc-400 hover:text-sky-900 transition-all duration-200 no-underline"
           >
             Explore All
-            <LuArrowRight className="group-hover:translate-x-1 transition-transform" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 group-hover:bg-zinc-900 group-hover:text-white transition-all">
+              <LuArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </div>
           </Link>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {featuredItems.map((item) => (
             <div
               key={item._id}
-              className="group relative flex flex-col bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500"
+              className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-sky-900/10 transition-all duration-300 hover:scale-[1.02]"
             >
               {/* Image Container */}
-              <div className="relative h-[400px] overflow-hidden">
+              <div className="relative h-[480px] overflow-hidden">
                 <Image
                   fill
                   src={item.imageUrl}
                   alt={item.destinationName}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute top-4 left-4 z-10 bg-[#0088d1] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
+
+                {/* Category Badge - No Pill */}
+                <div className="absolute top-6 left-6 z-10 bg-sky-900 text-white text-[10px] font-black px-4 py-2 rounded-lg uppercase tracking-widest shadow-lg">
                   {item?.category}
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-                {/* Top Badge */}
-                <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg shadow-sm">
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+                {/* Rating Badge */}
+                <div className="absolute top-6 right-6 flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg shadow-xl">
                   <LuStar className="text-amber-500 fill-amber-500" size={14} />
-                  <span className="text-xs font-black text-slate-900">4.5</span>
+                  <span className="text-xs font-black text-zinc-900">4.5</span>
                 </div>
 
                 {/* Bottom Overlay Info */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="flex items-center gap-2 text-sky-400 mb-1">
-                    <LuMapPin size={14} />
-                    <span className="text-[10px] font-black uppercase tracking-widest">
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="flex items-center gap-2 text-sky-400 mb-2">
+                    <LuMapPin size={16} />
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">
                       {item.country}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
+                  <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-6">
                     {item.destinationName}
                   </h3>
-                  <div className="flex items-center justify-between">
+
+                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
                     <div className="flex flex-col">
-                      <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest leading-none">
+                      <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest leading-none mb-1">
                         Starting At
                       </span>
-                      <span className="text-xl font-black text-white">
+                      <span className="text-2xl font-black text-white">
                         ${item.price}
                       </span>
                     </div>
                     <Link
                       href={`/destinations/${item._id}`}
-                      className="h-10 w-10 flex items-center justify-center bg-white rounded-lg text-slate-900 hover:bg-sky-600 hover:text-white transition-colors"
+                      className="h-14 w-14 flex items-center justify-center bg-white rounded-xl text-zinc-900 hover:bg-sky-900 hover:text-white transition-all duration-200 active:scale-90 shadow-lg"
                     >
-                      <LuArrowRight size={20} />
+                      <LuArrowRight size={24} />
                     </Link>
                   </div>
                 </div>

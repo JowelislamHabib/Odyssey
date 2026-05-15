@@ -31,9 +31,11 @@ const NavBar = () => {
       <div className="container mx-auto px-6 lg:px-10">
         <div className="flex justify-between h-20 items-center">
           {/* Brand - Modern & Minimal (Italic Removed) */}
-          <Link href="/" className="flex items-center gap-3 group no-underline">
-            <LuCompass className="text-sky-900 size-8 transition-transform duration-700 group-hover:rotate-180" />
-            <span className="text-2xl font-black tracking-tighter text-sky-900 uppercase">
+          <Link href="/" className="flex items-center gap-3 no-underline group">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-900 transition-transform duration-500 group-hover:rotate-180">
+              <LuCompass className="text-white size-7" />
+            </div>
+            <span className="text-3xl font-black tracking-tighter text-sky-900 uppercase">
               Odyssey
             </span>
           </Link>

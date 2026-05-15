@@ -1,0 +1,151 @@
+"use client";
+
+import React, { useRef } from "react";
+import { Avatar } from "@heroui/react";
+import { LuQuote, LuArrowLeft, LuArrowRight, LuStar } from "react-icons/lu";
+
+const Testimonial = () => {
+  const scrollRef = useRef(null);
+
+  const testimonials = [
+    {
+      name: "Sarah Jenkins",
+      role: "Adventure Enthusiast",
+      content:
+        "Odyssey transformed my perspective on travel. The attention to detail and curated locations made my trip to the Amalfi Coast absolutely seamless.",
+      image: "https://i.pravatar.cc/150?u=sarah",
+      rating: 5,
+    },
+    {
+      name: "Marcus Chen",
+      role: "Digital Nomad",
+      content:
+        "The best travel platform I've used in years. The interface is clean, and the booking process is incredibly efficient. Highly recommended for travelers.",
+      image: "https://i.pravatar.cc/150?u=marcus",
+      rating: 5,
+    },
+    {
+      name: "Elena Rodriguez",
+      role: "Luxury Traveler",
+      content:
+        "Finding unique, high-end stays used to be a chore until I found Odyssey. Their staff picks are consistently world-class and breathtaking.",
+      image: "https://i.pravatar.cc/150?u=elena",
+      rating: 4,
+    },
+    {
+      name: "David Park",
+      role: "Cultural Explorer",
+      content:
+        "The deep integration of local insights sets Odyssey apart. I felt like a local in Kyoto thanks to their curated destination guides.",
+      image: "https://i.pravatar.cc/150?u=david",
+      rating: 5,
+    },
+  ];
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo =
+        direction === "left"
+          ? scrollLeft - clientWidth
+          : scrollLeft + clientWidth;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-10">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 text-sky-900">
+              <div className="h-1 w-12 bg-sky-900" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">
+                Testimonials
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black text-zinc-900 uppercase tracking-tighter leading-none">
+              Voices of Our <br className="md:hidden" /> Explorers
+            </h2>
+          </div>
+
+          {/* Carousel Controls */}
+          <div className="flex gap-3">
+            <button
+              onClick={() => scroll("left")}
+              className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all active:scale-95 shadow-sm"
+            >
+              <LuArrowLeft size={20} />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all active:scale-95 shadow-sm"
+            >
+              <LuArrowRight size={20} />
+            </button>
+          </div>
+        </div>
+
+        {/* Grid-based Carousel Container */}
+        <div
+          ref={scrollRef}
+          className="grid grid-flow-col auto-cols-[100%] md:auto-cols-[calc(50%-16px)] lg:auto-cols-[calc(33.333%-22px)] gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-10"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {testimonials.map((t, index) => (
+            <div key={index} className="snap-center h-full">
+              <div className="group relative bg-zinc-50 p-10 rounded-2xl border border-zinc-100 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:shadow-sky-900/5 hover:scale-[1.02] h-full flex flex-col justify-between">
+                {/* Quote Icon - Fixed Position & Opacity */}
+                <div className="absolute top-8 right-10 text-zinc-200 group-hover:text-sky-900/10 transition-colors duration-300 pointer-events-none">
+                  <LuQuote size={40} />
+                </div>
+
+                <div className="relative z-10 space-y-6">
+                  {/* Star Rating Section */}
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <LuStar
+                        key={i}
+                        size={16}
+                        className={
+                          i < t.rating
+                            ? "fill-amber-400 text-amber-400"
+                            : "text-zinc-300"
+                        }
+                      />
+                    ))}
+                  </div>
+
+                  {/* Testimonial Content - Added Padding-Right to prevent mixing with Icon */}
+                  <p className="text-lg font-medium text-zinc-600 leading-relaxed pr-10">
+                    "{t.content}"
+                  </p>
+
+                  <div className="flex items-center gap-4 pt-6 border-t border-zinc-200/50">
+                    {/* Consistent Avatar Anatomy */}
+                    <Avatar className="w-11 h-11 border-2 border-white shadow-md ring-1 ring-zinc-100 object-cover rounded-xl">
+                      <Avatar.Image alt={t.name} src={t.image} />
+                      <Avatar.Fallback>{t.name.charAt(0)}</Avatar.Fallback>
+                    </Avatar>
+
+                    <div className="overflow-hidden">
+                      <h4 className="text-sm font-black text-zinc-900 uppercase tracking-tight truncate">
+                        {t.name}
+                      </h4>
+                      <p className="text-[10px] font-bold text-sky-900 uppercase tracking-widest truncate">
+                        {t.role}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonial;

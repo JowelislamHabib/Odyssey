@@ -8,66 +8,62 @@ import Link from "next/link";
 
 const DestinationCard = ({ item }) => {
   return (
-    <div className="">
-      <Card className="rounded-lg border border-slate-200 bg-white shadow-lg overflow-hidden group">
-        {/* Header with Next.js Image Optimization */}
-        <Card.Header className="p-0 relative h-60 w-full overflow-hidden">
-          <Image
-            src={item?.imageUrl}
-            alt={item?.destinationName}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500 rounded-md"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority={false}
-          />
-          <div className="absolute top-4 left-4 z-10 bg-[#0088d1] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
-            {item?.category}
+    <Card className="rounded-2xl border border-zinc-100 bg-white overflow-hidden group transition-all duration-500 hover:shadow-xl hover:shadow-sky-900/5">
+      <div className="relative h-64 w-full overflow-hidden">
+        <Image
+          src={item?.imageUrl}
+          alt={item?.destinationName}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute top-5 left-5 z-10 bg-sky-900 text-white text-[9px] font-black px-3 py-1 rounded-lg uppercase tracking-[0.2em] shadow-lg">
+          {item?.category}
+        </div>
+      </div>
+
+      <div className="pt-8 pb-8 px-5 flex flex-col">
+        {/* Header Section: Aligned to your arrow */}
+        <div className="mb-5">
+          <div className="flex items-center gap-1.5 text-sky-600 font-black text-[9px] uppercase tracking-[0.2em] mb-2">
+            <LuMapPin size={10} />
+            {item?.country}
           </div>
-        </Card.Header>
+          <h3 className="text-3xl font-black text-zinc-900 uppercase tracking-tighter leading-[0.9]">
+            {item?.destinationName}
+          </h3>
+        </div>
 
-        <Card.Content className="p-6 flex flex-col gap-3">
-          <div>
-            <Card.Title className="text-2xl font-black text-slate-900 uppercase">
-              {item?.destinationName}
-            </Card.Title>
-            <Card.Description className="flex items-center gap-1 text-[#0088d1] font-bold text-xs uppercase mt-1">
-              <LuMapPin size={12} />
-              {item?.country}
-            </Card.Description>
+        <p className="text-zinc-500 text-sm font-medium line-clamp-3 leading-relaxed mb-8 pr-2">
+          {item?.description}
+        </p>
+
+        <div className="flex items-center justify-between pt-6 border-t border-zinc-100 mb-8">
+          <div className="flex items-center gap-2 text-zinc-900 font-black text-[10px] uppercase tracking-wider">
+            <LuClock size={14} className="text-sky-900" />
+            {item?.duration} Days
           </div>
-
-          <p className="text-slate-500 text-sm font-medium line-clamp-2 leading-relaxed">
-            {item?.description}
-          </p>
-
-          <div className="flex items-center justify-between py-2 border-y border-slate-100 mt-2">
-            <div className="flex items-center gap-2 text-slate-600 font-bold text-xs">
-              <LuClock size={14} className="text-sky-500" />
-              {item?.duration} Days
-            </div>
-            <div className="text-right">
-              <span className="text-xs font-bold text-slate-400 block leading-none">
-                Price
-              </span>
-              <span className="text-xl font-black text-slate-900">
-                ${item?.price}
-              </span>
-            </div>
+          <div className="flex flex-col items-end">
+            <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest leading-none mb-1">
+              Starting At
+            </span>
+            <span className="text-2xl font-black text-sky-900 tracking-tighter leading-none">
+              ${item?.price}
+            </span>
           </div>
-        </Card.Content>
+        </div>
 
-        <Card.Footer className="p-6 pt-0">
-          <Link href={`/destinations/${item._id}`} className="w-full">
-            <Button
-              className="w-full h-14 bg-[#0088d1] text-white font-bold rounded-2xl shadow-[0_8px_20px_-5px_rgba(0,136,209,0.4)] hover:bg-[#0077b6] transition-all uppercase tracking-widest text-xs"
-              endContent={<LuArrowRight size={16} />}
-            >
-              Book Now
-            </Button>
-          </Link>
-        </Card.Footer>
-      </Card>
-    </div>
+        <Link href={`/destinations/${item._id}`} className="w-full">
+          <Button className="w-full h-14 bg-sky-900 text-white hover:bg-sky-800 font-black rounded-xl transition-all uppercase tracking-[0.2em] text-[11px] group/btn shadow-lg shadow-sky-900/10">
+            Explore Destination
+            <LuArrowRight
+              size={16}
+              className="ml-2 group-hover/btn:translate-x-1 transition-transform duration-300"
+            />
+          </Button>
+        </Link>
+      </div>
+    </Card>
   );
 };
 

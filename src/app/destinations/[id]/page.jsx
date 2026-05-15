@@ -21,7 +21,6 @@ const DestinationDetailsPage = async ({ params }) => {
     headers: await headers(),
   });
   const user = session?.user;
-  console.log(user);
 
   const { token } = await auth.api.getToken({
     headers: await headers(),
@@ -33,7 +32,6 @@ const DestinationDetailsPage = async ({ params }) => {
       headers: {
         authorization: `Bearer ${token}`,
       },
-      cache: "no-store",
     },
   );
   const destination = await res.json();

@@ -7,11 +7,10 @@ import { authClient } from "@/lib/auth-client";
 
 const BookingCancelAlert = ({ booking }) => {
   const router = useRouter();
+
   const handleCancelBooking = async () => {
     const { data: tokenData } = await authClient.token();
-    // console.log(tokenData);
 
-    console.log(booking.id);
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${booking._id}`,
       {
@@ -22,61 +21,63 @@ const BookingCancelAlert = ({ booking }) => {
         },
       },
     );
-    const data = await res.json();
-    console.log(data);
+
     if (res.ok) {
       router.refresh();
-      toast.success("Destination cancelled successfully!");
+      toast.success("Booking cancelled successfully!");
     }
   };
+
   return (
-    <div>
-      <AlertDialog>
-        <Button
-          variant="outline"
-          className="flex items-center gap-2 px-6 h-11 py-3 rounded-xl border border-slate-200  font-bold text-sm hover:bg-rose-50 hover:text-rose-600 hover:border-rose-100 transition-all"
-        >
-          <LuTrash2 size={16} />
-          Cancel
-        </Button>
-        <AlertDialog.Backdrop>
-          <AlertDialog.Container>
-            <AlertDialog.Dialog className="sm:max-w-[400px]">
-              <AlertDialog.CloseTrigger />
-              <AlertDialog.Header>
-                <AlertDialog.Icon status="danger" />
-                <AlertDialog.Heading>
-                  Cancel{" "}
-                  <span className="text-sky-500 font-bold">
-                    {booking.destinationName} Booking
-                  </span>{" "}
-                  permanently?
-                </AlertDialog.Heading>
-              </AlertDialog.Header>
-              <AlertDialog.Body>
-                <p>
-                  This will permanently delete{" "}
-                  <strong>{booking.destinationName}</strong> booking and all of
-                  its data. This action cannot be undone.
-                </p>
-              </AlertDialog.Body>
-              <AlertDialog.Footer>
-                <Button slot="close" variant="tertiary">
-                  Cancel
-                </Button>
-                <Button
-                  onClick={handleCancelBooking}
-                  slot="close"
-                  variant="danger"
-                >
-                  Cancel Booking
-                </Button>
-              </AlertDialog.Footer>
-            </AlertDialog.Dialog>
-          </AlertDialog.Container>
-        </AlertDialog.Backdrop>
-      </AlertDialog>
-    </div>
+    <AlertDialog>
+      {/* Trigger Button - Clean & Editorial */}
+      <Button className="flex items-center gap-2 px-8 h-14 rounded-xl border-2 border-zinc-100 bg-white font-black text-[11px] uppercase text-zinc-400 hover:border-rose-600 hover:text-rose-600 transition-all duration-300">
+        <LuTrash2 size={16} />
+        Cancel Trip
+      </Button>
+
+      {/* HeroUI Original Behavior Nesting */}
+      <AlertDialog.Backdrop>
+        <AlertDialog.Container>
+          <AlertDialog.Dialog className="sm:max-w-[400px] rounded-2xl border-none shadow-2xl bg-white overflow-hidden">
+            <AlertDialog.CloseTrigger />
+
+            <AlertDialog.Header className="flex flex-col items-center pt-10 px-8">
+              <AlertDialog.Icon status="danger" className="mb-4" />
+              <AlertDialog.Heading className="text-xl font-black text-zinc-900 uppercase leading-tight text-center">
+                Abort this Odyssey?
+              </AlertDialog.Heading>
+            </AlertDialog.Header>
+
+            <AlertDialog.Body className="px-10 py-6 text-center">
+              <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                You are about to cancel your trip to{" "}
+                <span className="text-sky-900 font-black uppercase">
+                  {booking.destinationName}
+                </span>
+                . This will release your reservation immediately.
+              </p>
+            </AlertDialog.Body>
+
+            <AlertDialog.Footer className="p-10 pt-2 flex gap-3">
+              <Button
+                slot="close"
+                className="flex-1 h-14 rounded-xl font-black uppercase text-[10px] text-zinc-400 bg-zinc-100 hover:bg-zinc-200 transition-colors"
+              >
+                Keep Trip
+              </Button>
+              <Button
+                onClick={handleCancelBooking}
+                slot="close"
+                className="flex-1 h-14 bg-rose-600 text-white font-black rounded-xl shadow-xl shadow-rose-600/20 hover:bg-rose-700 transition-all uppercase text-[10px]"
+              >
+                Confirm Cancel
+              </Button>
+            </AlertDialog.Footer>
+          </AlertDialog.Dialog>
+        </AlertDialog.Container>
+      </AlertDialog.Backdrop>
+    </AlertDialog>
   );
 };
 

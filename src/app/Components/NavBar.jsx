@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Avatar, Button, Dropdown, Label } from "@heroui/react";
-import { LuCompass, LuMenu, LuX } from "react-icons/lu";
+import { LuMenu, LuX } from "react-icons/lu";
 import { authClient } from "@/lib/auth-client";
-import { IoLogIn, IoPerson, IoPersonAdd } from "react-icons/io5";
+import { IoPerson, IoPersonAdd } from "react-icons/io5";
 import { PiGear } from "react-icons/pi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Image from "next/image";
@@ -26,9 +26,13 @@ const NavBar = () => {
     { label: "404 Page", href: "/404" },
   ];
 
-  const menuItems = user?.role === "admin"
-    ? [...baseMenuItems, { label: "Add Destination", href: "/add-destination" }]
-    : baseMenuItems;
+  const menuItems =
+    user?.role === "admin"
+      ? [
+          ...baseMenuItems,
+          { label: "Add Destination", href: "/add-destination" },
+        ]
+      : baseMenuItems;
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/95 border-b border-zinc-100">
@@ -196,7 +200,7 @@ const NavBar = () => {
               {item.label}
             </Link>
           ))}
-          
+
           <div className="pt-4 border-t border-zinc-100">
             {user ? (
               <div className="space-y-4">

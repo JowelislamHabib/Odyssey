@@ -4,15 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Featured = async () => {
-  let featuredItems = [];
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`);
-    if (res.ok) {
-      featuredItems = await res.json();
-    }
-  } catch (error) {
-    console.error("Failed to fetch featured items:", error);
-  }
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`);
+  const featuredItems = await res.json();
 
   return (
     <section className="py-24 bg-white">
@@ -41,7 +34,7 @@ const Featured = async () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {featuredItems.map((item) => (
+          {featuredItems?.map((item) => (
             <div
               key={item._id}
               className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-sky-900/10 transition-all duration-300 hover:scale-[1.02]"
@@ -49,8 +42,8 @@ const Featured = async () => {
               <div className="relative h-[480px] overflow-hidden">
                 <Image
                   fill
-                  src={item.imageUrl}
-                  alt={item.destinationName}
+                  src={item?.imageUrl}
+                  alt={item?.destinationName}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
@@ -69,11 +62,11 @@ const Featured = async () => {
                   <div className="flex items-center gap-2 text-sky-400 mb-2">
                     <LuMapPin size={16} />
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-                      {item.country}
+                      {item?.country}
                     </span>
                   </div>
                   <h3 className="text-3xl font-bold text-white uppercase tracking-tighter mb-6">
-                    {item.destinationName}
+                    {item?.destinationName}
                   </h3>
 
                   <div className="flex items-center justify-between pt-6 border-t border-white/10">
@@ -82,11 +75,11 @@ const Featured = async () => {
                         Starting At
                       </span>
                       <span className="text-2xl font-bold text-white">
-                        ${item.price}
+                        ${item?.price}
                       </span>
                     </div>
                     <Link
-                      href={`/destinations/${item._id}`}
+                      href={`/destinations/${item?._id}`}
                       className="h-14 w-14 flex items-center justify-center bg-white rounded-xl text-zinc-900 hover:bg-sky-900 hover:text-white transition-all duration-200 active:scale-90 shadow-lg"
                     >
                       <LuArrowRight size={24} />

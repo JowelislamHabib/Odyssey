@@ -17,6 +17,12 @@ import { headers } from "next/headers";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const user = session?.user;
+  console.log(user);
+
   const { token } = await auth.api.getToken({
     headers: await headers(),
   });
@@ -53,10 +59,12 @@ const DestinationDetailsPage = async ({ params }) => {
           Back to Destinations
         </Link>
 
-        <div className="flex gap-3">
-          <EditModal destination={destination} />
-          <DeleteAlert destination={destination} />
-        </div>
+        {user?.role === "admin" && (
+          <div className="flex gap-3">
+            <EditModal destination={destination} />
+            <DeleteAlert destination={destination} />
+          </div>
+        )}
       </div>
 
       <div className="relative w-full h-[400px] md:h-[600px] rounded-2xl overflow-hidden mb-16 shadow-2xl shadow-sky-900/10">

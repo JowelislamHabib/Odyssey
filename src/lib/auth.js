@@ -3,9 +3,19 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { jwt } from "better-auth/plugins";
 
-const client = process.env.MONGO_URI ? new MongoClient(process.env.MONGO_URI) : null;
+const client = process.env.MONGO_URI
+  ? new MongoClient(process.env.MONGO_URI)
+  : null;
 const db = client ? client.db("Odessy") : null;
 export const auth = betterAuth({
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        required: false,
+      },
+    },
+  },
   emailAndPassword: {
     enabled: true,
   },

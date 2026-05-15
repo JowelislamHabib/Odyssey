@@ -93,16 +93,7 @@ export function UserUpdate({ customTrigger, isOpen, onOpenChange }) {
                     </div>
                     <FieldError className="text-red-500 text-[10px] font-bold uppercase ml-1" />
                   </TextField>
-                  <TextField
-                    isRequired
-                    name="image"
-                    validate={(v) =>
-                      !v.startsWith("https://")
-                        ? "Please enter a valid url (must start with https://)"
-                        : null
-                    }
-                    className="space-y-2"
-                  >
+                  <TextField isRequired name="image" className="space-y-2">
                     <label className="text-stone-900 text-sm font-bold uppercase tracking-widest ml-1">
                       Avatar URL
                     </label>

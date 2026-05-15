@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Input, Button, Separator } from "@heroui/react";
 import { LuCompass } from "react-icons/lu";
 import { PiTwitterLogo, PiInstagramLogo, PiLinkedinLogo } from "react-icons/pi";
+import Image from "next/image";
 
 const Footer = () => {
   const linkGroups = {
@@ -26,10 +27,15 @@ const Footer = () => {
               href="/"
               className="flex items-center gap-3 no-underline group"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-900 transition-transform duration-500 group-hover:rotate-180">
-                <LuCompass className="text-white size-7" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl  transition-transform duration-500 group-hover:rotate-180">
+                <Image
+                  src="/footer-logo.png"
+                  height={48}
+                  width={48}
+                  alt="Odyssey Logo"
+                />
               </div>
-              <span className="text-3xl font-bold tracking-tighter text-white uppercase">
+              <span className="text-3xl font-black tracking-tighter text-white uppercase">
                 Odyssey
               </span>
             </Link>

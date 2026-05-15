@@ -9,6 +9,7 @@ import { authClient } from "@/lib/auth-client";
 import { IoLogIn, IoPerson, IoPersonAdd } from "react-icons/io5";
 import { PiGear } from "react-icons/pi";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Image from "next/image";
 
 const NavBar = () => {
   const router = useRouter();
@@ -31,10 +32,16 @@ const NavBar = () => {
       <div className="container mx-auto px-6 lg:px-10">
         <div className="flex justify-between h-20 items-center">
           <Link href="/" className="flex items-center gap-3 no-underline group">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-900 transition-transform duration-500 group-hover:rotate-180">
-              <LuCompass className="text-white size-7" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-500 group-hover:rotate-180">
+              <Image
+                src="/logo.png"
+                height={48}
+                width={48}
+                alt="Odyssey Logo"
+              />
             </div>
-            <span className="text-3xl font-bold tracking-tighter text-sky-900 uppercase">
+
+            <span className="text-3xl font-black tracking-tighter text-sky-900 uppercase">
               Odyssey
             </span>
           </Link>

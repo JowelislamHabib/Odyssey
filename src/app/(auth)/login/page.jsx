@@ -23,14 +23,9 @@ const LoginPage = () => {
       callbackURL: "/",
     });
 
-    console.log(data, error);
     if (error) {
-      toast.danger(error.message, {
-        actionProps: {
-          children: "Remove",
-          variant: "danger",
-        },
-        description: "Please check your credentials and try again.",
+      toast.danger("Authentication Failed", {
+        description: error.message,
         indicator: <IoAlertCircleOutline size={20} />,
       });
     }
@@ -43,20 +38,27 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-stone-50 flex items-center justify-center px-4 py-12">
+    <div className="min-h-[calc(100vh-80px)] bg-zinc-50 flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
-        <div className="text-center mb-10">
-          <h1 className="text-5xl font-bold text-stone-900  mb-2">
+        <div className="text-center mb-12">
+          <div className="flex justify-center items-center gap-2 mb-4">
+            <div className="h-0.5 w-8 bg-sky-900" />
+            <span className="text-sm font-black uppercase text-sky-900">
+              Credentials
+            </span>
+            <div className="h-0.5 w-8 bg-sky-900" />
+          </div>
+          <h1 className="text-5xl font-black text-zinc-900 uppercase leading-none">
             Welcome Back
           </h1>
-          <p className="text-stone-900/50 font-medium">
-            Enter your details to access your account
+          <p className="text-zinc-400 font-bold mt-4 uppercase text-sm">
+            Access your global travel itinerary
           </p>
         </div>
 
-        <div className="bg-white p-8 md:p-10 rounded-xl border border-stone-200 shadow-xl shadow-stone-200/50">
+        <div className="bg-white p-10 rounded-2xl border border-zinc-100 shadow-2xl shadow-sky-900/5">
           <Form
-            className="space-y-6"
+            className="space-y-8"
             onSubmit={onSubmit}
             validationBehavior="native"
           >
@@ -65,75 +67,75 @@ const LoginPage = () => {
               name="email"
               validate={(value) =>
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-                  ? "Invalid email address"
+                  ? "Invalid email format"
                   : null
               }
-              className="space-y-2"
+              className="flex flex-col gap-2"
             >
-              <label className="text-stone-900 text-sm font-bold uppercase tracking-widest ml-1">
+              <label className="text-sky-900 text-sm font-black uppercase ml-1">
                 Email Address
               </label>
               <div className="relative flex items-center">
-                <IoMailOutline className="absolute left-4 text-stone-400 size-5 z-10" />
+                <IoMailOutline className="absolute left-4 text-zinc-400 size-5 z-10" />
                 <Input
                   aria-label="email"
                   name="email"
-                  placeholder="name@example.com"
-                  className="w-full pl-11 pr-4 py-4 bg-stone-50 border border-stone-200 rounded-xl text-stone-900 focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+                  placeholder="NAME@EXAMPLE.COM"
+                  className="w-full pl-12 pr-4 h-14 bg-zinc-50/50 border border-zinc-100 rounded-xl text-zinc-900 font-bold text-[11px] uppercase transition-all hover:border-sky-900"
                 />
               </div>
-              <FieldError className="text-red-500 text-[10px] font-bold uppercase ml-1" />
+              <FieldError className="text-rose-500 text-[9px] font-black uppercase ml-1" />
             </TextField>
 
             <TextField
               isRequired
               name="password"
               validate={(value) =>
-                value.length < 8 ? "Minimum 8 characters required" : null
+                value.length < 8 ? "Minimum 8 characters" : null
               }
-              className="space-y-2"
+              className="flex flex-col gap-2"
             >
-              <div className="flex justify-between items-center ml-1">
-                <label className="text-stone-900 text-sm font-bold uppercase tracking-widest">
-                  Password
-                </label>
-              </div>
+              <label className="text-sky-900 text-sm font-black uppercase ml-1">
+                Security Password
+              </label>
               <div className="relative flex items-center">
-                <IoLockClosedOutline className="absolute left-4 text-stone-400 size-5 z-10" />
+                <IoLockClosedOutline className="absolute left-4 text-zinc-400 size-5 z-10" />
                 <Input
-                  area-label="Password"
+                  aria-label="Password"
                   type="password"
                   name="password"
                   placeholder="••••••••"
-                  className="w-full pl-11 pr-4 py-4 bg-stone-50 border border-stone-200 rounded-xl text-stone-900 focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+                  className="w-full pl-12 pr-4 h-14 bg-zinc-50/50 border border-zinc-100 rounded-xl text-zinc-900 transition-all hover:border-sky-900"
                 />
               </div>
-              <FieldError className="text-red-500 text-[10px] font-bold uppercase ml-1" />
+              <FieldError className="text-rose-500 text-[9px] font-black uppercase ml-1" />
             </TextField>
 
             <button
               type="submit"
-              className="w-full py-5 bg-stone-900 text-stone-50 rounded-xl font-bold text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-sky-500 transition-all active:scale-[0.98] shadow-xl shadow-stone-200 mt-2"
+              className=" cursor-pointer w-full h-16 bg-sky-900 text-white rounded-xl font-black text-[11px] uppercase flex items-center justify-center gap-3 hover:bg-sky-800 transition-all shadow-xl shadow-sky-900/20"
             >
               Secure Login
-              <IoArrowForward size={18} />
+              <IoArrowForward size={16} />
             </button>
           </Form>
 
-          <div className="relative my-8">
+          <div className="relative my-10">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-stone-100"></div>
+              <div className="w-full border-t border-zinc-100"></div>
             </div>
-            <div className="relative flex justify-center text-[10px] uppercase tracking-[0.3em] font-bold">
-              <span className="bg-white px-4 text-stone-300">or</span>
+            <div className="relative flex justify-center">
+              <span className="bg-white px-4 text-zinc-300 font-black uppercase text-[9px]">
+                or
+              </span>
             </div>
           </div>
 
           <button
             onClick={() => signIn()}
-            className="w-full py-4 bg-white text-stone-700 border border-stone-200 rounded-xl font-bold text-sm flex items-center justify-center gap-3 hover:bg-stone-50 transition-all active:scale-[0.98] shadow-sm"
+            className="w-full h-14 bg-white text-zinc-900 border border-zinc-100 rounded-xl font-black text-sm uppercase flex items-center justify-center gap-3 hover:bg-zinc-50 transition-all shadow-sm cursor-pointer"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24">
+            <svg width="18" height="18" viewBox="0 0 24 24">
               <path
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                 fill="#4285F4"
@@ -154,25 +156,25 @@ const LoginPage = () => {
             Continue with Google
           </button>
 
-          <div className="mt-8 text-center">
-            <p className="text-stone-900/50 text-sm font-medium">
-              Don't have an account?
+          <div className="mt-10 text-center">
+            <p className="text-zinc-400 text-sm font-bold uppercase">
+              New to Odyssey?{" "}
               <Link
                 href="/register"
-                className="text-stone-900 font-bold hover:text-sky-500 transition-colors underline decoration-sky-500/30 underline-offset-4"
+                className="text-sky-900 font-black underline underline-offset-4 decoration-sky-900/20 hover:decoration-sky-900 transition-all"
               >
-                Create one now
+                Create Account
               </Link>
             </p>
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-12 text-center">
           <Link
             href="/"
-            className="text-stone-900/40 text-sm font-bold uppercase tracking-[0.2em] hover:text-stone-900"
+            className="text-zinc-400 text-sm font-black uppercase hover:text-sky-900 transition-colors"
           >
-            ← Back to Home
+            ← Return to Hub
           </Link>
         </div>
       </div>

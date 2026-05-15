@@ -20,6 +20,7 @@ import Image from "next/image";
 const ProfileDashboard = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  console.log(user);
 
   const [activeTab, setActiveTab] = useState("overview");
 

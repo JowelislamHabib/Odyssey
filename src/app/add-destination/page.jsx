@@ -153,7 +153,7 @@ const AddDestinationPage = () => {
             className="flex flex-col gap-3"
           >
             <Label className="text-sm font-bold uppercase text-sky-900 ml-1 flex items-center gap-2">
-              <LuDollarSign size={14} /> Investment (USD)
+              <LuDollarSign size={14} /> Price (USD)
             </Label>
             <Input
               type="number"

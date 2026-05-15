@@ -72,7 +72,7 @@ const ProfileDashboard = () => {
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-sml">{item.icon}</span>
-                    <span className="text-sms font-bold uppercase tracking-widest">
+                    <span className="text-sm font-bold uppercase tracking-widest">
                       {item.label}
                     </span>
                   </div>
@@ -89,7 +89,7 @@ const ProfileDashboard = () => {
 
               <button className="w-full flex items-center gap-3 px-4 py-3.5 text-rose-500 hover:bg-rose-50 rounded-lg transition-all">
                 <LuLogOut size={20} />
-                <span className="text-sms font-bold uppercase tracking-widest">
+                <span className="text-sm font-bold uppercase tracking-widest">
                   Logout
                 </span>
               </button>

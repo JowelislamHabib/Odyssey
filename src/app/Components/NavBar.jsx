@@ -83,7 +83,7 @@ const NavBar = () => {
                   align="center"
                 >
                   <div className="px-4 py-4 mb-2 bg-sky-900 rounded-xl text-white">
-                    <p className="text-sms font-medium opacity-80 mb-1 leading-none">
+                    <p className="text-sm font-medium opacity-80 mb-1 leading-none">
                       Logged in as
                     </p>
                     <p className="text-sm font-bold truncate leading-none">

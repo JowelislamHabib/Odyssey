@@ -50,7 +50,7 @@ export function UserUpdate({ customTrigger, isOpen, onOpenChange }) {
         customTrigger
       ) : (
         <Button
-          className="bg-stone-900 text-stone-50 font-bold px-8 h-12 rounded-xl hover:bg-sky-500 transition-all active:scale-95 text-sms uppercase tracking-widest"
+          className="bg-stone-900 text-stone-50 font-bold px-8 h-12 rounded-xl hover:bg-sky-500 transition-all active:scale-95 text-sm uppercase tracking-widest"
           startContent={<IoSettingsOutline size={18} />}
         >
           Account Settings
@@ -80,7 +80,7 @@ export function UserUpdate({ customTrigger, isOpen, onOpenChange }) {
                     }
                     className="space-y-2"
                   >
-                    <label className="text-stone-900 text-sms font-bold uppercase tracking-widest ml-1">
+                    <label className="text-stone-900 text-sm font-bold uppercase tracking-widest ml-1">
                       Full Name
                     </label>
                     <div className="relative flex items-center">
@@ -103,7 +103,7 @@ export function UserUpdate({ customTrigger, isOpen, onOpenChange }) {
                     }
                     className="space-y-2"
                   >
-                    <label className="text-stone-900 text-sms font-bold uppercase tracking-widest ml-1">
+                    <label className="text-stone-900 text-sm font-bold uppercase tracking-widest ml-1">
                       Avatar URL
                     </label>
                     <div className="relative flex items-center">
@@ -125,7 +125,7 @@ export function UserUpdate({ customTrigger, isOpen, onOpenChange }) {
                       Cancel
                     </Button>
                     <Button
-                      className="bg-stone-900 text-stone-50 font-bold px-8 h-12 rounded-xl hover:bg-sky-500 transition-all active:scale-95 text-sms uppercase tracking-widest"
+                      className="bg-stone-900 text-stone-50 font-bold px-8 h-12 rounded-xl hover:bg-sky-500 transition-all active:scale-95 text-sm uppercase tracking-widest"
                       type="submit"
                       slot="close"
                     >

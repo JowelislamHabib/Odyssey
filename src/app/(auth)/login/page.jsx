@@ -70,7 +70,7 @@ const LoginPage = () => {
               }
               className="space-y-2"
             >
-              <label className="text-stone-900 text-sms font-bold uppercase tracking-widest ml-1">
+              <label className="text-stone-900 text-sm font-bold uppercase tracking-widest ml-1">
                 Email Address
               </label>
               <div className="relative flex items-center">
@@ -94,7 +94,7 @@ const LoginPage = () => {
               className="space-y-2"
             >
               <div className="flex justify-between items-center ml-1">
-                <label className="text-stone-900 text-sms font-bold uppercase tracking-widest">
+                <label className="text-stone-900 text-sm font-bold uppercase tracking-widest">
                   Password
                 </label>
               </div>
@@ -113,7 +113,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              className="w-full py-5 bg-stone-900 text-stone-50 rounded-xl font-bold text-sms uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-sky-500 transition-all active:scale-[0.98] shadow-xl shadow-stone-200 mt-2"
+              className="w-full py-5 bg-stone-900 text-stone-50 rounded-xl font-bold text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-sky-500 transition-all active:scale-[0.98] shadow-xl shadow-stone-200 mt-2"
             >
               Secure Login
               <IoArrowForward size={18} />
@@ -170,7 +170,7 @@ const LoginPage = () => {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="text-stone-900/40 text-sms font-bold uppercase tracking-[0.2em] hover:text-stone-900"
+            className="text-stone-900/40 text-sm font-bold uppercase tracking-[0.2em] hover:text-stone-900"
           >
             ← Back to Home
           </Link>

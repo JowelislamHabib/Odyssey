@@ -51,7 +51,7 @@ const BookingCard = ({ destination }) => {
             <h3 className="text-5xl font-bold text-sky-900 tracking-tighter">
               ${destination?.price}
             </h3>
-            <span className="text-zinc-500 font-bold text-sms uppercase tracking-widest">
+            <span className="text-zinc-500 font-bold text-sm uppercase tracking-widest">
               / Guest
             </span>
           </div>

@@ -24,7 +24,7 @@ const Featured = async () => {
           </div>
           <Link
             href="/destinations"
-            className="group flex items-center gap-3 text-sms font-bold uppercase tracking-widest text-zinc-400 hover:text-sky-900 transition-all duration-200 no-underline"
+            className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-zinc-400 hover:text-sky-900 transition-all duration-200 no-underline"
           >
             Explore All
             <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 group-hover:bg-zinc-900 group-hover:text-white transition-all">
@@ -55,7 +55,7 @@ const Featured = async () => {
 
                 <div className="absolute top-6 right-6 flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg shadow-xl">
                   <LuStar className="text-amber-500 fill-amber-500" size={14} />
-                  <span className="text-sms font-bold text-zinc-900">4.5</span>
+                  <span className="text-sm font-bold text-zinc-900">4.5</span>
                 </div>
 
                 <div className="absolute bottom-8 left-8 right-8">

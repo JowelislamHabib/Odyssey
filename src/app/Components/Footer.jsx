@@ -75,7 +75,7 @@ const Footer = () => {
                   aria-label="Subscribe to newsletter"
                   className="bg-zinc-900 text-white rounded-xl **:not-[]:bg-zinc-900 group-data-[hover=true]:bg-zinc-800 border-zinc-800 h-14"
                 />
-                <Button className="bg-sky-900 h-14 font-bold uppercase tracking-widest text-white rounded-xl shadow-xl transition-all duration-200 hover:bg-white hover:text-sky-900 active:scale-95 text-sms">
+                <Button className="bg-sky-900 h-14 font-bold uppercase tracking-widest text-white rounded-xl shadow-xl transition-all duration-200 hover:bg-white hover:text-sky-900 active:scale-95 text-sm">
                   Subscribe
                 </Button>
               </div>
@@ -86,7 +86,7 @@ const Footer = () => {
         <Separator className="bg-zinc-900" />
 
         <div className="mt-12 flex flex-col items-center justify-between gap-8 md:flex-row">
-          <p className="text-sms font-bold uppercase tracking-widest text-zinc-500">
+          <p className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             © 2026 <span className="text-white">Odyssey</span>. All rights
             reserved.
           </p>

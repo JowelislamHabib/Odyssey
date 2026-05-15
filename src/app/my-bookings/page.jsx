@@ -169,7 +169,7 @@ const MyBookingsPage = async () => {
           <h3 className="text-2xl font-bold text-zinc-900 uppercase">
             No Active Bookings
           </h3>
-          <p className="text-zinc-400 font-bold mt-2 mb-10 uppercase text-sms">
+          <p className="text-zinc-400 font-bold mt-2 mb-10 uppercase text-sm">
             Your next adventure is waiting to be found.
           </p>
           <Link href="/destinations">

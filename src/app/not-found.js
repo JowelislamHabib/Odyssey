@@ -24,7 +24,7 @@ const NotFound = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 uppercase tracking-tight">
               Lost in Paradise?
             </h2>
-            <p className="text-slate-500 font-bold uppercase text-sms tracking-[0.2em]">
+            <p className="text-slate-500 font-bold uppercase text-sm tracking-[0.2em]">
               The destination you are looking for doesn't exist or has moved.
             </p>
           </div>
@@ -32,7 +32,7 @@ const NotFound = () => {
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold uppercase text-sms tracking-widest hover:bg-sky-600 transition-all shadow-lg shadow-slate-200 no-underline"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold uppercase text-sm tracking-widest hover:bg-sky-600 transition-all shadow-lg shadow-slate-200 no-underline"
             >
               <LuChevronLeft size={18} />
               Back to Home
@@ -40,7 +40,7 @@ const NotFound = () => {
 
             <Link
               href="/destinations"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white border border-slate-200 text-slate-900 rounded-xl font-bold uppercase text-sms tracking-widest hover:border-sky-600 hover:text-sky-600 transition-all no-underline"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white border border-slate-200 text-slate-900 rounded-xl font-bold uppercase text-sm tracking-widest hover:border-sky-600 hover:text-sky-600 transition-all no-underline"
             >
               <LuSearch size={18} />
               Explore Trips

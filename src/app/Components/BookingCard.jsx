@@ -38,15 +38,11 @@ const BookingCard = ({ destination }) => {
       },
       body: JSON.stringify(bookingData),
     });
-
-    // We keep the toast inside the onPress or handleBooking as per your preference
-    // but I've ensured the toast structure matches your original precisely below.
   };
 
   return (
     <div className="w-full">
       <Card className="p-8 rounded-2xl border border-zinc-100 bg-white shadow-2xl shadow-sky-900/5">
-        {/* Pricing */}
         <div className="mb-8">
           <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
             Investment
@@ -61,7 +57,6 @@ const BookingCard = ({ destination }) => {
           </div>
         </div>
 
-        {/* Date Section */}
         <div className="space-y-4 mb-8">
           <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">
             Departure Date
@@ -118,7 +113,6 @@ const BookingCard = ({ destination }) => {
           </div>
         </div>
 
-        {/* Restore your original toast logic here */}
         <Button
           onPress={() =>
             toast.success("You have booked a destination", {
@@ -138,7 +132,6 @@ const BookingCard = ({ destination }) => {
           Book Now
         </Button>
 
-        {/* Trust Indicators */}
         <div className="space-y-4 pt-8 border-t border-zinc-50">
           {[
             "Free cancellation up to 7 days",

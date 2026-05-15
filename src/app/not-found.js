@@ -8,7 +8,6 @@ const NotFound = () => {
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-white px-6">
       <div className="container mx-auto text-center">
-        {/* Large Decorative Element */}
         <div className="relative inline-block mb-8">
           <h1 className="text-[12rem] md:text-[18rem] font-black text-slate-50 leading-none select-none tracking-tighter">
             404
@@ -20,7 +19,6 @@ const NotFound = () => {
           </div>
         </div>
 
-        {/* Text Content */}
         <div className="max-w-xl mx-auto space-y-6">
           <div className="space-y-2">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tight">
@@ -50,7 +48,6 @@ const NotFound = () => {
           </div>
         </div>
 
-        {/* Subtle Footer for the Error Page */}
         <div className="mt-20">
           <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">
             Error Code: Destination_Not_Found

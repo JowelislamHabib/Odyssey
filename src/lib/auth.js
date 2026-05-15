@@ -17,16 +17,14 @@ export const auth = betterAuth({
     },
   },
   database: mongodbAdapter(db, {
-    // Optional: if you don't provide a client, database transactions won't be enabled.
     client,
   }),
   session: {
     cookieCache: {
       enabled: true,
-      maxAge: 24 * 60 * 60, // 1 day in seconds
-      strategy: "jwt", // Use JWT for session management
+      maxAge: 24 * 60 * 60,
+      strategy: "jwt",
     },
-  }, // 1 day
+  },
   plugins: [jwt()],
-  // plugins: [admin()],
 });

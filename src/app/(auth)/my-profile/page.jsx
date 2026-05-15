@@ -14,7 +14,7 @@ import {
   LuCompass,
 } from "react-icons/lu";
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client"; // import the auth client
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 
 const ProfileDashboard = () => {
@@ -33,9 +33,7 @@ const ProfileDashboard = () => {
     <div className="bg-slate-50 min-h-screen">
       <div className="container mx-auto px-6 py-10">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* 1. Sidebar Navigation */}
           <aside className="w-full lg:w-80 space-y-4">
-            {/* User Mini Card */}
             <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center gap-4">
               <div className="size-14 rounded-xl overflow-hidden border-2 border-sky-100">
                 <Image
@@ -56,7 +54,6 @@ const ProfileDashboard = () => {
               </div>
             </div>
 
-            {/* Nav Links */}
             <nav className="bg-white border border-slate-200 rounded-xl p-2 shadow-sm">
               {[
                 { id: "overview", label: "Dashboard", icon: <LuUser /> },
@@ -99,9 +96,7 @@ const ProfileDashboard = () => {
             </nav>
           </aside>
 
-          {/* 2. Main Content Area */}
           <main className="flex-1 space-y-8">
-            {/* Header / Welcome */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
               <div>
                 <h1 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">
@@ -117,7 +112,6 @@ const ProfileDashboard = () => {
               </button>
             </div>
 
-            {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {stats.map((stat, i) => (
                 <div
@@ -139,7 +133,6 @@ const ProfileDashboard = () => {
               ))}
             </div>
 
-            {/* Dynamic Tab Content */}
             <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
               <div className="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
                 <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest">
@@ -150,7 +143,6 @@ const ProfileDashboard = () => {
                 </button>
               </div>
 
-              {/* Placeholder for Content Rows */}
               <div className="p-2">
                 {[1, 2, 3].map((item) => (
                   <div

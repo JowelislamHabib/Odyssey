@@ -7,12 +7,10 @@ const ErrorPage = ({ error, reset }) => {
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-white px-6">
       <div className="container mx-auto max-w-2xl text-center">
-        {/* Error Icon Block */}
         <div className="mb-8 inline-flex items-center justify-center p-6 bg-rose-50 border border-rose-100 rounded-xl text-rose-500 shadow-sm">
           <LuCloudAlert size={48} strokeWidth={2.5} />
         </div>
 
-        {/* Content */}
         <div className="space-y-4">
           <h1 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter">
             Something Went Wrong
@@ -23,14 +21,12 @@ const ErrorPage = ({ error, reset }) => {
           </p>
         </div>
 
-        {/* Error Message Box (Subtle) */}
         <div className="mt-8 p-4 bg-slate-50 border border-slate-100 rounded-xl inline-block">
           <code className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
             Error: {error?.message || "Internal_Server_Crash"}
           </code>
         </div>
 
-        {/* Actions */}
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => reset()}
@@ -49,7 +45,6 @@ const ErrorPage = ({ error, reset }) => {
           </button>
         </div>
 
-        {/* Support Link */}
         <div className="mt-16">
           <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">
             Need help?{" "}

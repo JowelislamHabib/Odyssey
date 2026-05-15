@@ -57,7 +57,6 @@ export function EditModal({ destination }) {
 
   return (
     <Modal>
-      {/* Trigger Button - Refined for Details Page Action Bar */}
       <Button className="font-bold border-2 border-sky-900 rounded-xl px-6 h-12 bg-white text-sky-900 hover:bg-sky-900 hover:text-white transition-all duration-300 flex items-center gap-2 uppercase text-[10px] ">
         <LuPencil size={14} />
         Edit
@@ -65,7 +64,6 @@ export function EditModal({ destination }) {
 
       <Modal.Backdrop className="bg-zinc-900/40 backdrop-blur-sm">
         <Modal.Container placement="center">
-          {/* Main Dialog with Odyssey geometry */}
           <Modal.Dialog className="sm:max-w-2xl rounded-2xl border-none shadow-2xl bg-white overflow-hidden">
             <Modal.CloseTrigger className="top-6 right-6 text-zinc-400 hover:text-sky-900 transition-colors" />
 
@@ -88,7 +86,6 @@ export function EditModal({ destination }) {
             <Modal.Body className="p-10">
               <form onSubmit={onSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Destination Name */}
                   <div className="md:col-span-2">
                     <TextField
                       name="destinationName"
@@ -107,7 +104,6 @@ export function EditModal({ destination }) {
                     </TextField>
                   </div>
 
-                  {/* Country */}
                   <TextField
                     name="country"
                     isRequired
@@ -121,7 +117,6 @@ export function EditModal({ destination }) {
                     <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                   </TextField>
 
-                  {/* Category */}
                   <div className="flex flex-col gap-2">
                     <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
                       Category
@@ -161,7 +156,6 @@ export function EditModal({ destination }) {
                     </Select>
                   </div>
 
-                  {/* Price */}
                   <TextField
                     name="price"
                     type="number"
@@ -176,7 +170,6 @@ export function EditModal({ destination }) {
                     <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                   </TextField>
 
-                  {/* Duration */}
                   <TextField
                     name="duration"
                     isRequired
@@ -190,7 +183,6 @@ export function EditModal({ destination }) {
                     <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                   </TextField>
 
-                  {/* Image URL */}
                   <div className="md:col-span-2">
                     <TextField
                       name="imageUrl"
@@ -206,7 +198,6 @@ export function EditModal({ destination }) {
                     </TextField>
                   </div>
 
-                  {/* Description */}
                   <div className="md:col-span-2">
                     <TextField
                       name="description"
@@ -223,7 +214,6 @@ export function EditModal({ destination }) {
                   </div>
                 </div>
 
-                {/* Modal Footer Buttons */}
                 <div className="flex gap-4 pt-6 pb-2">
                   <Button
                     slot="close"

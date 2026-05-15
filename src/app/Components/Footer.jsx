@@ -21,7 +21,6 @@ const Footer = () => {
     <footer className="bg-zinc-950 pb-10 pt-24 text-zinc-500">
       <div className="container mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-16 mb-20 lg:grid-cols-12">
-          {/* Brand & Tagline */}
           <div className="lg:col-span-5 space-y-8">
             <Link
               href="/"
@@ -44,7 +43,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Navigation Links Grid */}
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-3 lg:col-span-7">
             {Object.entries(linkGroups).map(([title, links]) => (
               <div key={title}>
@@ -66,7 +64,6 @@ const Footer = () => {
               </div>
             ))}
 
-            {/* Newsletter Section */}
             <div className="flex flex-col">
               <h3 className="mb-8 text-[10px] font-black uppercase tracking-[0.3em] text-white">
                 Newsletter
@@ -88,14 +85,12 @@ const Footer = () => {
 
         <Separator className="bg-zinc-900" />
 
-        {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-8 md:flex-row">
           <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">
             © 2026 <span className="text-white">Odyssey</span>. All rights
             reserved.
           </p>
 
-          {/* Social Icons */}
           <div className="flex gap-3">
             {[
               { icon: <PiTwitterLogo size={20} />, label: "Twitter" },

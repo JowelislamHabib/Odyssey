@@ -56,7 +56,6 @@ const Testimonial = () => {
   return (
     <section className="py-24 bg-sky-50 overflow-hidden">
       <div className="container mx-auto px-6 lg:px-10">
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-sky-900">
@@ -70,7 +69,6 @@ const Testimonial = () => {
             </h2>
           </div>
 
-          {/* Carousel Controls - Strong Sky-900 Hover */}
           <div className="flex gap-3">
             <button
               onClick={() => scroll("left")}
@@ -87,7 +85,6 @@ const Testimonial = () => {
           </div>
         </div>
 
-        {/* Grid-based Carousel Container */}
         <div
           ref={scrollRef}
           className="grid grid-flow-col auto-cols-[100%] md:auto-cols-[calc(50%-16px)] lg:auto-cols-[calc(33.333%-22px)] gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-10"
@@ -95,15 +92,12 @@ const Testimonial = () => {
         >
           {testimonials.map((t, index) => (
             <div key={index} className="snap-center h-full">
-              {/* Card - Pure White with Sky-900 Hover logic */}
               <div className="group relative bg-white p-10 rounded-2xl border border-sky-100 transition-all duration-300 hover:shadow-2xl hover:shadow-sky-900/10 hover:scale-[1.02] h-full flex flex-col justify-between">
-                {/* Quote Icon */}
                 <div className="absolute top-8 right-10 text-sky-50 group-hover:text-sky-100 transition-colors duration-300 pointer-events-none">
                   <LuQuote size={40} />
                 </div>
 
                 <div className="relative z-10 space-y-6">
-                  {/* Star Rating */}
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <LuStar
@@ -123,7 +117,6 @@ const Testimonial = () => {
                   </p>
 
                   <div className="flex items-center gap-4 pt-6 border-t border-sky-50 transition-colors group-hover:border-sky-100">
-                    {/* Avatar Anatomy - Ring reacts with Sky-900 weight on card hover */}
                     <Avatar className="w-11 h-11 border-2 border-white shadow-md ring-1 ring-sky-100 group-hover:ring-sky-900/30 transition-all object-cover rounded-xl">
                       <Avatar.Image alt={t.name} src={t.image} />
                       <Avatar.Fallback className="bg-sky-50 text-sky-900">
@@ -135,7 +128,7 @@ const Testimonial = () => {
                       <h4 className="text-sm font-black text-zinc-900 uppercase tracking-tight truncate">
                         {t.name}
                       </h4>
-                      {/* Role text reacts to hover using Sky-900 */}
+
                       <p className="text-[10px] font-bold text-sky-600 uppercase tracking-widest truncate group-hover:text-sky-900 transition-colors">
                         {t.role}
                       </p>

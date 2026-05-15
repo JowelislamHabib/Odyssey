@@ -41,7 +41,6 @@ const DestinationDetailsPage = async ({ params }) => {
 
   return (
     <div className="container mx-auto px-6 lg:px-10 py-12">
-      {/* 1. Navigation & Administrative Actions */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
         <Link
           href="/destinations"
@@ -60,7 +59,6 @@ const DestinationDetailsPage = async ({ params }) => {
         </div>
       </div>
 
-      {/* 2. Hero Image - Fixed Geometry to match card style */}
       <div className="relative w-full h-[400px] md:h-[600px] rounded-2xl overflow-hidden mb-16 shadow-2xl shadow-sky-900/10">
         <Image
           src={destination?.imageUrl}
@@ -74,11 +72,8 @@ const DestinationDetailsPage = async ({ params }) => {
         </div>
       </div>
 
-      {/* 3. Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-        {/* Left Column: Information (Flush Alignment) */}
         <div className="lg:col-span-2 space-y-12">
-          {/* Header Section: Aligned with Image Edge */}
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-sky-900 font-black uppercase text-[10px] tracking-[0.3em]">
               <div className="h-[2px] w-8 bg-sky-900" />
@@ -110,7 +105,6 @@ const DestinationDetailsPage = async ({ params }) => {
 
           <Separator className="bg-zinc-100" />
 
-          {/* Overview Section */}
           <section className="space-y-6">
             <h2 className="text-[10px] font-black text-sky-900 uppercase tracking-[0.4em]">
               The Overview
@@ -120,7 +114,6 @@ const DestinationDetailsPage = async ({ params }) => {
             </p>
           </section>
 
-          {/* Highlights Section */}
           <section className="space-y-8 bg-sky-50/50 p-10 rounded-2xl border border-sky-100">
             <h2 className="text-[10px] font-black text-sky-900 uppercase tracking-[0.4em]">
               Journey Highlights
@@ -146,7 +139,6 @@ const DestinationDetailsPage = async ({ params }) => {
           </section>
         </div>
 
-        {/* Right Column: Booking Sidebar */}
         <div className="relative">
           <div className="sticky top-24">
             <BookingCard destination={destination} />

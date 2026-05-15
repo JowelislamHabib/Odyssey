@@ -30,7 +30,6 @@ const MyBookingsPage = async () => {
 
   return (
     <div className="container mx-auto px-6 py-16">
-      {/* Page Header */}
       <div className="mb-16 border-b border-zinc-100 pb-10">
         <div className="flex items-center gap-3 text-sky-900 mb-4">
           <div className="h-1 w-10 bg-sky-900" />
@@ -52,7 +51,6 @@ const MyBookingsPage = async () => {
             key={booking._id}
             className="flex flex-col lg:flex-row bg-white border border-zinc-100 rounded-2xl overflow-hidden shadow-2xl shadow-sky-900/5 transition-all hover:shadow-sky-900/10"
           >
-            {/* Image Section */}
             <div className="relative w-full lg:w-[450px] h-72 lg:h-auto overflow-hidden">
               <Image
                 fill
@@ -67,7 +65,6 @@ const MyBookingsPage = async () => {
               </div>
             </div>
 
-            {/* Content Section */}
             <div className="flex-1 p-10 flex flex-col justify-between">
               <div>
                 <div className="flex flex-col sm:flex-row justify-between items-start gap-6">
@@ -87,9 +84,7 @@ const MyBookingsPage = async () => {
                   </div>
                 </div>
 
-                {/* Info Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
-                  {/* Traveler */}
                   <div className="space-y-4">
                     <p className="text-[9px] font-black uppercase text-zinc-400">
                       Traveler
@@ -118,7 +113,6 @@ const MyBookingsPage = async () => {
                     </div>
                   </div>
 
-                  {/* Date */}
                   <div className="space-y-4">
                     <p className="text-[9px] font-black uppercase text-zinc-400">
                       Departure
@@ -136,7 +130,6 @@ const MyBookingsPage = async () => {
                     </div>
                   </div>
 
-                  {/* Reference */}
                   <div className="space-y-4">
                     <p className="text-[9px] font-black uppercase text-zinc-400">
                       Reference
@@ -153,7 +146,6 @@ const MyBookingsPage = async () => {
                 </div>
               </div>
 
-              {/* Footer Actions */}
               <div className="mt-14 flex items-center justify-end gap-4">
                 <BookingCancelAlert booking={booking} />
                 <Link
@@ -169,7 +161,6 @@ const MyBookingsPage = async () => {
         ))}
       </div>
 
-      {/* Empty State */}
       {bookings.length === 0 && (
         <div className="flex flex-col items-center justify-center py-32 bg-zinc-50 rounded-3xl border-2 border-dashed border-zinc-200">
           <div className="p-8 bg-white rounded-2xl shadow-xl mb-6 text-zinc-200">

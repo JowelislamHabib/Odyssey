@@ -30,13 +30,11 @@ const BookingCancelAlert = ({ booking }) => {
 
   return (
     <AlertDialog>
-      {/* Trigger Button - Clean & Editorial */}
       <Button className="flex items-center gap-2 px-8 h-14 rounded-xl border-2 border-zinc-100 bg-white font-black text-[11px] uppercase text-zinc-400 hover:border-rose-600 hover:text-rose-600 transition-all duration-300">
         <LuTrash2 size={16} />
         Cancel Trip
       </Button>
 
-      {/* HeroUI Original Behavior Nesting */}
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px] rounded-2xl border-none shadow-2xl bg-white overflow-hidden">

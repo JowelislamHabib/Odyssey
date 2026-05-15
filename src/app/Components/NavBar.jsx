@@ -30,7 +30,6 @@ const NavBar = () => {
     <nav className="sticky top-0 z-50 w-full bg-white/95 border-b border-zinc-100">
       <div className="container mx-auto px-6 lg:px-10">
         <div className="flex justify-between h-20 items-center">
-          {/* Brand - Modern & Minimal (Italic Removed) */}
           <Link href="/" className="flex items-center gap-3 no-underline group">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-900 transition-transform duration-500 group-hover:rotate-180">
               <LuCompass className="text-white size-7" />
@@ -40,7 +39,6 @@ const NavBar = () => {
             </span>
           </Link>
 
-          {/* Nav Links - Floating Pill Design */}
           <div className="hidden md:flex items-center bg-zinc-100/50 p-1.5 rounded-2xl border border-zinc-200/50">
             {menuItems.map((item) => {
               const isActive = pathname === item.href;
@@ -60,7 +58,6 @@ const NavBar = () => {
             })}
           </div>
 
-          {/* Actions - Sophisticated & Clean */}
           <div className="hidden md:flex items-center gap-6">
             {user && (
               <Dropdown placement="bottom">
@@ -168,7 +165,6 @@ const NavBar = () => {
             )}
           </div>
 
-          {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-sky-900 bg-zinc-100 rounded-xl"
@@ -178,7 +174,6 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-zinc-100 px-6 py-8 space-y-4 animate-in slide-in-from-top duration-300">
           {menuItems.map((item) => (

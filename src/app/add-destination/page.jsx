@@ -64,7 +64,6 @@ const AddDestinationPage = () => {
 
   return (
     <div className="container mx-auto py-12 px-6">
-      {/* Page Header */}
       <div className="mb-10 text-center md:text-left">
         <h1 className="text-4xl font-black text-slate-900 uppercase ">
           Add Destination
@@ -77,7 +76,6 @@ const AddDestinationPage = () => {
         className="p-8 md:p-12 space-y-10 bg-white/50 backdrop-blur-md rounded-xl border border-slate-200 shadow-xl shadow-slate-200/50"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-          {/* Destination Name */}
           <div className="md:col-span-2">
             <TextField
               name="destinationName"
@@ -96,7 +94,6 @@ const AddDestinationPage = () => {
             </TextField>
           </div>
 
-          {/* Country */}
           <TextField name="country" isRequired className="flex flex-col gap-2">
             <Label className="text-base font-black uppercase text-slate-900 tracking-wider ml-1 flex items-center gap-2">
               <LuGlobe className="text-[#0088d1]" size={14} /> Country
@@ -108,7 +105,6 @@ const AddDestinationPage = () => {
             <FieldError className="text-rose-500 text-base font-bold ml-1" />
           </TextField>
 
-          {/* Category */}
           <div className="flex flex-col gap-2">
             <Label className="text-base font-black uppercase text-slate-900 tracking-wider ml-1">
               Category
@@ -148,7 +144,6 @@ const AddDestinationPage = () => {
             </Select>
           </div>
 
-          {/* Price */}
           <TextField
             name="price"
             type="number"
@@ -166,7 +161,6 @@ const AddDestinationPage = () => {
             <FieldError className="text-rose-500 text-base font-bold ml-1" />
           </TextField>
 
-          {/* Duration */}
           <TextField name="duration" isRequired className="flex flex-col gap-2">
             <Label className="text-base font-black uppercase text-slate-900 tracking-wider ml-1 flex items-center gap-2">
               <LuClock className="text-[#0088d1]" size={14} /> Duration
@@ -178,7 +172,6 @@ const AddDestinationPage = () => {
             <FieldError className="text-rose-500 text-base font-bold ml-1" />
           </TextField>
 
-          {/* Departure Date */}
           <div className="md:col-span-2">
             <TextField
               name="departureDate"
@@ -198,7 +191,6 @@ const AddDestinationPage = () => {
             </TextField>
           </div>
 
-          {/* Image URL */}
           <div className="md:col-span-2">
             <TextField
               name="imageUrl"
@@ -217,7 +209,6 @@ const AddDestinationPage = () => {
             </TextField>
           </div>
 
-          {/* Description */}
           <div className="md:col-span-2">
             <TextField
               name="description"
@@ -236,7 +227,6 @@ const AddDestinationPage = () => {
           </div>
         </div>
 
-        {/* Action Button */}
         <div className="pt-4">
           <Button
             type="submit"

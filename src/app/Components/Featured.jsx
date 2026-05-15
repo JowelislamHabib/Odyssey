@@ -10,7 +10,6 @@ const Featured = async () => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6 lg:px-10">
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-sky-900">
@@ -34,14 +33,12 @@ const Featured = async () => {
           </Link>
         </div>
 
-        {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {featuredItems.map((item) => (
             <div
               key={item._id}
               className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-sky-900/10 transition-all duration-300 hover:scale-[1.02]"
             >
-              {/* Image Container */}
               <div className="relative h-[480px] overflow-hidden">
                 <Image
                   fill
@@ -50,20 +47,17 @@ const Featured = async () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
-                {/* Category Badge - No Pill */}
                 <div className="absolute top-6 left-6 z-10 bg-sky-900 text-white text-[10px] font-black px-4 py-2 rounded-lg uppercase tracking-widest shadow-lg">
                   {item?.category}
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-                {/* Rating Badge */}
                 <div className="absolute top-6 right-6 flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg shadow-xl">
                   <LuStar className="text-amber-500 fill-amber-500" size={14} />
                   <span className="text-xs font-black text-zinc-900">4.5</span>
                 </div>
 
-                {/* Bottom Overlay Info */}
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="flex items-center gap-2 text-sky-400 mb-2">
                     <LuMapPin size={16} />

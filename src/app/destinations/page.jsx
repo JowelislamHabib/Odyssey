@@ -11,7 +11,6 @@ const DestinationPage = async () => {
 
   return (
     <div className="container mx-auto px-6 lg:px-10 py-24 bg-white">
-      {/* Page Header & Filter Bar */}
       <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
         <div className="space-y-4">
           <div className="flex items-center gap-3 text-sky-900">
@@ -28,7 +27,6 @@ const DestinationPage = async () => {
           </p>
         </div>
 
-        {/* Search & Filter - Colors synced with Featured Section Button styles */}
         <div className="flex w-full md:w-auto gap-3">
           <div className="relative w-full md:w-80 group">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-sky-900 group-focus-within:text-sky-600 transition-colors">
@@ -49,7 +47,6 @@ const DestinationPage = async () => {
         </div>
       </div>
 
-      {/* Stats Ribbon - Using the Sky-900 Accent established in Testimonials */}
       <div className="flex gap-16 mb-16 pb-12 border-b border-sky-100">
         <div className="flex flex-col gap-2">
           <span className="text-[10px] font-black text-sky-900/50 uppercase tracking-[0.3em]">
@@ -69,14 +66,12 @@ const DestinationPage = async () => {
         </div>
       </div>
 
-      {/* Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
         {destinations.map((item) => (
           <DestinationCard key={item._id} item={item} />
         ))}
       </div>
 
-      {/* Empty State - Styled like the Testimonial Backgrounds */}
       {destinations.length === 0 && (
         <div className="py-32 text-center bg-sky-50/30 rounded-2xl border border-sky-100 flex flex-col items-center gap-6">
           <div className="h-20 w-20 bg-white rounded-2xl shadow-xl shadow-sky-900/5 flex items-center justify-center text-sky-900">

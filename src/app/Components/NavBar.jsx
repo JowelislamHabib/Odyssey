@@ -19,13 +19,16 @@ const NavBar = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  const menuItems = [
+  const baseMenuItems = [
     { label: "Home", href: "/" },
     { label: "Destinations", href: "/destinations" },
     { label: "My Bookings", href: "/my-bookings" },
-    { label: "Explore", href: "/explore" },
-    { label: "Add Destination", href: "/add-destination" },
+    { label: "404 Page", href: "/404" },
   ];
+
+  const menuItems = user?.role === "admin"
+    ? [...baseMenuItems, { label: "Add Destination", href: "/add-destination" }]
+    : baseMenuItems;
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/95 border-b border-zinc-100">
@@ -193,6 +196,49 @@ const NavBar = () => {
               {item.label}
             </Link>
           ))}
+          
+          <div className="pt-4 border-t border-zinc-100">
+            {user ? (
+              <div className="space-y-4">
+                <Link
+                  href="/my-profile"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-2xl font-bold no-underline text-zinc-300"
+                >
+                  Account
+                </Link>
+                <div
+                  onClick={async () => {
+                    setIsOpen(false);
+                    await authClient.signOut();
+                    router.push("/login");
+                    router.refresh();
+                  }}
+                  className="block text-2xl font-bold no-underline text-red-400 cursor-pointer"
+                >
+                  Sign Out
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 mt-2">
+                <Link
+                  href="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center py-3 rounded-xl bg-zinc-100 text-sky-900 text-sm font-bold no-underline"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center py-3 rounded-xl bg-sky-900 text-white text-sm font-bold shadow-lg flex items-center justify-center gap-2 no-underline"
+                >
+                  <IoPersonAdd />
+                  Join Odyssey
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </nav>

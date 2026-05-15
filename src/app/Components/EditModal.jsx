@@ -26,7 +26,6 @@ export function EditModal({ destination }) {
     category,
     price,
     duration,
-    departureDate,
     imageUrl,
     description,
   } = destination;
@@ -58,39 +57,36 @@ export function EditModal({ destination }) {
 
   return (
     <Modal>
-      {/* Trigger Button matches the Details Page style */}
-      <Button
-        variant="bordered"
-        className="font-bold border-slate-200 rounded-full px-6  bg-sky-50 text-sky-600 hover:bg-sky-100 transition-colors flex items-center gap-2"
-      >
-        <LuPencil size={18} />
+      {/* Trigger Button - Refined for Details Page Action Bar */}
+      <Button className="font-bold border-2 border-sky-900 rounded-xl px-6 h-12 bg-white text-sky-900 hover:bg-sky-900 hover:text-white transition-all duration-300 flex items-center gap-2 uppercase text-[10px] ">
+        <LuPencil size={14} />
         Edit
       </Button>
 
-      <Modal.Backdrop>
+      <Modal.Backdrop className="bg-zinc-900/40 backdrop-blur-sm">
         <Modal.Container placement="center">
-          {/* Main Dialog with custom Odessy rounding */}
-          <Modal.Dialog className="sm:max-w-2xl rounded-lg border-none shadow-2xl bg-white overflow-hidden">
-            <Modal.CloseTrigger className="top-6 right-6" />
+          {/* Main Dialog with Odyssey geometry */}
+          <Modal.Dialog className="sm:max-w-2xl rounded-2xl border-none shadow-2xl bg-white overflow-hidden">
+            <Modal.CloseTrigger className="top-6 right-6 text-zinc-400 hover:text-sky-900 transition-colors" />
 
-            <Modal.Header className="p-8 pb-0 flex flex-col gap-1">
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-sky-50 text-sky-600 rounded-xl">
+            <Modal.Header className="p-10 pb-0 flex flex-col gap-1">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-sky-50 text-sky-900 rounded-xl">
                   <LuPencil size={24} />
                 </div>
                 <div>
-                  <Modal.Heading className="text-2xl font-black text-slate-900 uppercase tracking-tight leading-none">
+                  <Modal.Heading className="text-3xl font-bold text-zinc-900 uppercase  leading-none">
                     Edit Destination
                   </Modal.Heading>
-                  <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">
-                    Update travel package details
+                  <p className="text-sky-900/40 text-[9px] font-bold uppercase  mt-2">
+                    Refine global travel package parameters
                   </p>
                 </div>
               </div>
             </Modal.Header>
 
-            <Modal.Body className="p-8">
-              <form onSubmit={onSubmit} className="space-y-6">
+            <Modal.Body className="p-10">
+              <form onSubmit={onSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Destination Name */}
                   <div className="md:col-span-2">
@@ -100,14 +96,14 @@ export function EditModal({ destination }) {
                       defaultValue={destinationName}
                       className="flex flex-col gap-2"
                     >
-                      <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                      <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
                         Destination Name
                       </Label>
                       <Input
-                        placeholder="Bali Paradise"
-                        className="rounded-lg border-slate-200 h-12 hover:border-sky-500 transition-all"
+                        placeholder="ENTER DESTINATION NAME..."
+                        className="rounded-xl border-zinc-200 h-14 bg-zinc-50/50 hover:border-sky-900 transition-all font-bold uppercase text-[10px]  px-4"
                       />
-                      <FieldError className="text-rose-500 text-[10px] font-bold" />
+                      <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                     </TextField>
                   </div>
 
@@ -118,16 +114,16 @@ export function EditModal({ destination }) {
                     defaultValue={country}
                     className="flex flex-col gap-2"
                   >
-                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                    <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
                       Country
                     </Label>
-                    <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
-                    <FieldError className="text-rose-500 text-[10px] font-bold" />
+                    <Input className="rounded-xl border-zinc-200 h-14 bg-zinc-50/50 hover:border-sky-900 transition-all font-bold uppercase text-[10px]  px-4" />
+                    <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                   </TextField>
 
                   {/* Category */}
                   <div className="flex flex-col gap-2">
-                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                    <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
                       Category
                     </Label>
                     <Select
@@ -136,11 +132,11 @@ export function EditModal({ destination }) {
                       defaultValue={category}
                       className="w-full"
                     >
-                      <Select.Trigger className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all px-4">
+                      <Select.Trigger className="rounded-xl border-zinc-200 h-14 bg-zinc-50/50 hover:border-sky-900 transition-all px-4 font-bold uppercase text-[10px] ">
                         <Select.Value />
                         <Select.Indicator />
                       </Select.Trigger>
-                      <Select.Popover className="rounded-xl">
+                      <Select.Popover className="rounded-xl border-zinc-100 shadow-xl">
                         <ListBox className="p-2">
                           {[
                             "Beach",
@@ -154,7 +150,7 @@ export function EditModal({ destination }) {
                               key={item}
                               id={item}
                               textValue={item}
-                              className="rounded-xl p-2 hover:bg-sky-50"
+                              className="rounded-lg p-3 font-bold uppercase text-[10px]  hover:bg-sky-50 text-zinc-600 data-[selected=true]:text-sky-900 data-[selected=true]:bg-sky-50"
                             >
                               {item}
                               <ListBox.ItemIndicator />
@@ -173,11 +169,11 @@ export function EditModal({ destination }) {
                     defaultValue={price}
                     className="flex flex-col gap-2"
                   >
-                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
+                    <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
                       Price (USD)
                     </Label>
-                    <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
-                    <FieldError className="text-rose-500 text-[10px] font-bold" />
+                    <Input className="rounded-xl border-zinc-200 h-14 bg-zinc-50/50 hover:border-sky-900 transition-all font-bold uppercase text-[10px]  px-4" />
+                    <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                   </TextField>
 
                   {/* Duration */}
@@ -187,11 +183,11 @@ export function EditModal({ destination }) {
                     defaultValue={duration}
                     className="flex flex-col gap-2"
                   >
-                    <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
-                      Duration
+                    <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
+                      Duration (Days)
                     </Label>
-                    <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
-                    <FieldError className="text-rose-500 text-[10px] font-bold" />
+                    <Input className="rounded-xl border-zinc-200 h-14 bg-zinc-50/50 hover:border-sky-900 transition-all font-bold uppercase text-[10px]  px-4" />
+                    <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                   </TextField>
 
                   {/* Image URL */}
@@ -202,11 +198,11 @@ export function EditModal({ destination }) {
                       defaultValue={imageUrl}
                       className="flex flex-col gap-2"
                     >
-                      <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
-                        Image URL
+                      <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
+                        Asset URL
                       </Label>
-                      <Input className="rounded-xl border-slate-200 h-12 hover:border-sky-500 transition-all" />
-                      <FieldError className="text-rose-500 text-[10px] font-bold" />
+                      <Input className="rounded-xl border-zinc-200 h-14 bg-zinc-50/50 hover:border-sky-900 transition-all font-bold text-[10px]  px-4" />
+                      <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                     </TextField>
                   </div>
 
@@ -218,30 +214,30 @@ export function EditModal({ destination }) {
                       defaultValue={description}
                       className="flex flex-col gap-2"
                     >
-                      <Label className="text-[10px] font-black uppercase text-slate-900 tracking-wider ml-1">
-                        Description
+                      <Label className="text-[10px] font-bold uppercase text-sky-900  ml-1">
+                        Narrative Description
                       </Label>
-                      <TextArea className="rounded-lg border-slate-200 p-4 hover:border-sky-500 transition-all min-h-30" />
-                      <FieldError className="text-rose-500 text-[10px] font-bold" />
+                      <TextArea className="rounded-xl border-zinc-200 p-4 bg-zinc-50/50 hover:border-sky-900 transition-all min-h-32 font-medium text-sm text-zinc-600 leading-relaxed" />
+                      <FieldError className="text-rose-500 text-[9px] font-bold uppercase " />
                     </TextField>
                   </div>
                 </div>
 
                 {/* Modal Footer Buttons */}
-                <div className="flex gap-4 pt-4">
+                <div className="flex gap-4 pt-6 pb-2">
                   <Button
                     slot="close"
                     variant="flat"
-                    className="flex-1 h-14 rounded-xl font-bold text-slate-500"
+                    className="flex-1 h-16 rounded-xl font-bold uppercase  text-[10px] text-zinc-400 bg-zinc-100 hover:bg-zinc-200 transition-colors"
                   >
-                    Cancel
+                    Discard
                   </Button>
                   <Button
                     type="submit"
                     slot="close"
-                    className="flex-[2] h-14 bg-[#0088d1] text-white font-black rounded-xl shadow-[0_10px_25px_-5px_rgba(0,136,209,0.4)] hover:bg-[#0077b6] transition-all uppercase tracking-widest text-xs"
+                    className="flex-[2] h-16 bg-sky-900 text-white font-bold rounded-xl shadow-xl shadow-sky-900/20 hover:bg-sky-800 transition-all uppercase  text-[10px]"
                   >
-                    Save Changes
+                    Commit Changes
                   </Button>
                 </div>
               </form>

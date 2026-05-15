@@ -4,7 +4,9 @@ import { LuSearch, LuFilter } from "react-icons/lu";
 import { Input, Button } from "@heroui/react";
 
 const DestinationPage = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`, {
+    cache: "no-store",
+  });
   const destinations = await res.json();
 
   return (

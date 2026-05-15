@@ -5,7 +5,6 @@ import { jwt } from "better-auth/plugins";
 
 const client = new MongoClient(process.env.MONGO_URI);
 const db = client.db("Odessy");
-
 export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,

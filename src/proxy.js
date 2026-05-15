@@ -10,6 +10,11 @@ export async function proxy(request) {
   if (!session) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
+
+  const url = new URL(request.url);
+  if (url.pathname === "/add-destination" && session.user.role !== "admin") {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
 }
 
 export const config = {
